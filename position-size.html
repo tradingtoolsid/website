@@ -107,10 +107,26 @@ Dollar Distance
 
 <input type="number" id="risk" placeholder="Risk (%)">
 
-<input type="number" id="entry" placeholder="Entry Price">
+<div id="entryMode">
 
-<input type="number" id="sl" placeholder="Stop Loss Price">
+<input type="number"
+id="entry"
+placeholder="Entry Price">
 
+<input type="number"
+id="sl"
+placeholder="Stop Loss Price">
+
+</div>
+
+<div id="distanceMode"
+style="display:none;">
+
+<input type="number"
+id="distanceInput"
+placeholder="SL Distance ($)">
+
+</div>
 <button onclick="calculate()">
 Calculate
 </button>
