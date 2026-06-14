@@ -140,6 +140,28 @@ Result will appear here
 </div>
 
 <script>
+function changeMode(){
+
+let mode =
+document.getElementById("mode").value;
+
+if(mode=="entry"){
+
+document.getElementById("entryMode").style.display="block";
+
+document.getElementById("distanceMode").style.display="none";
+
+}
+
+else{
+
+document.getElementById("entryMode").style.display="none";
+
+document.getElementById("distanceMode").style.display="block";
+
+}
+
+  }
 
 function calculate(){
 
