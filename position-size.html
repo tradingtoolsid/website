@@ -9,63 +9,75 @@
 <style>
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#0F172A;
-color:white;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0F172A;
+    color:white;
 }
 
 header{
-background:#081225;
-padding:25px;
-text-align:center;
-border-bottom:3px solid #FBBF24;
+    background:#081225;
+    padding:25px;
+    text-align:center;
+    border-bottom:3px solid #FBBF24;
 }
 
 header h1{
-color:#FBBF24;
-margin:0;
+    color:#FBBF24;
+    margin:0;
 }
 
 .container{
-max-width:700px;
-margin:auto;
-padding:20px;
+    max-width:700px;
+    margin:auto;
+    padding:20px;
 }
 
 .card{
-background:#1E293B;
-padding:25px;
-border-radius:15px;
+    background:#1E293B;
+    padding:25px;
+    border-radius:15px;
 }
 
-input{
-width:100%;
-padding:15px;
-margin-bottom:15px;
-border:none;
-border-radius:10px;
-font-size:16px;
-box-sizing:border-box;
+input, select{
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    box-sizing:border-box;
 }
 
 button{
-width:100%;
-padding:15px;
-background:#FBBF24;
-border:none;
-border-radius:10px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
+    width:100%;
+    padding:15px;
+    background:#FBBF24;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 .result{
-margin-top:20px;
-background:#081225;
-padding:20px;
-border-radius:10px;
-text-align:center;
+    margin-top:20px;
+    background:#081225;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    line-height:1.8;
+}
+
+.gold{
+    color:#FBBF24;
+    font-weight:bold;
+}
+
+.green{
+    color:#22C55E;
+    font-size:24px;
+    font-weight:bold;
 }
 
 </style>
@@ -74,33 +86,21 @@ text-align:center;
 <body>
 
 <header>
-<h1>Position Size Calculator</h1>
-<p>TradingToolsID</p>
+    <h1>Position Size Calculator</h1>
+    <p>TradingToolsID</p>
 </header>
 
 <div class="container">
 
 <div class="card">
-  <h3 style="text-align:center;color:#FBBF24;">
+
+<h3 style="text-align:center;color:#FBBF24;">
 Calculation Mode
 </h3>
 
-<select id="mode" onchange="changeMode()" style="
-width:100%;
-padding:15px;
-margin-bottom:15px;
-border-radius:10px;
-font-size:16px;
-">
-
-<option value="entry">
-Entry + Stop Loss
-</option>
-
-<option value="distance">
-Dollar Distance
-</option>
-
+<select id="mode" onchange="changeMode()">
+    <option value="entry">Entry + Stop Loss</option>
+    <option value="distance">Dollar Distance</option>
 </select>
 
 <input type="number" id="balance" placeholder="Account Balance ($)">
@@ -109,24 +109,24 @@ Dollar Distance
 
 <div id="entryMode">
 
-<input type="number"
-id="entry"
-placeholder="Entry Price">
+    <input type="number"
+    id="entry"
+    placeholder="Entry Price">
 
-<input type="number"
-id="sl"
-placeholder="Stop Loss Price">
+    <input type="number"
+    id="sl"
+    placeholder="Stop Loss Price">
+
+</div>
+
+<div id="distanceMode" style="display:none;">
+
+    <input type="number"
+    id="distanceInput"
+    placeholder="SL Distance ($)">
 
 </div>
 
-<div id="distanceMode"
-style="display:none;">
-
-<input type="number"
-id="distanceInput"
-placeholder="SL Distance ($)">
-
-</div>
 <button onclick="calculate()">
 Calculate
 </button>
@@ -140,115 +140,108 @@ Result will appear here
 </div>
 
 <script>
-function changeMode(){
 
-let mode =
-document.getElementById("mode").value;
+function changeMode() {
 
-if(mode=="entry"){
+    let mode =
+    document.getElementById("mode").value;
 
-document.getElementById("entryMode").style.display="block";
+    if (mode === "entry") {
 
-document.getElementById("distanceMode").style.display="none";
+        document.getElementById("entryMode").style.display = "block";
+        document.getElementById("distanceMode").style.display = "none";
 
-}
+    } else {
 
-else{
+        document.getElementById("entryMode").style.display = "none";
+        document.getElementById("distanceMode").style.display = "block";
 
-document.getElementById("entryMode").style.display="none";
-
-document.getElementById("distanceMode").style.display="block";
-
-}
-
-
-function calculate(){
-
-let balance =
-parseFloat(document.getElementById("balance").value);
-
-let risk =
-parseFloat(document.getElementById("risk").value);
-
-if(!balance || !risk){
-
-document.getElementById("result").innerHTML =
-"Please fill all fields";
-
-return;
+    }
 
 }
 
-let riskAmount =
-balance * (risk/100);
+function calculate() {
 
-let mode =
-document.getElementById("mode").value;
+    let balance =
+    parseFloat(document.getElementById("balance").value);
 
-let distance;
+    let risk =
+    parseFloat(document.getElementById("risk").value);
 
-if(mode=="entry"){
+    if (!balance || !risk) {
 
-let entry =
-parseFloat(document.getElementById("entry").value);
+        document.getElementById("result").innerHTML =
+        "Please fill all fields";
 
-let sl =
-parseFloat(document.getElementById("sl").value);
+        return;
+    }
 
-if(!entry || !sl){
+    let riskAmount =
+    balance * (risk / 100);
 
-document.getElementById("result").innerHTML =
-"Please fill all fields";
+    let mode =
+    document.getElementById("mode").value;
 
-return;
+    let distance;
 
-}
+    if (mode === "entry") {
 
-distance =
-Math.abs(entry-sl);
+        let entry =
+        parseFloat(document.getElementById("entry").value);
 
-}
+        let sl =
+        parseFloat(document.getElementById("sl").value);
 
-else{
+        if (!entry || !sl) {
 
-distance =
-parseFloat(
-document.getElementById("distanceInput").value
-);
+            document.getElementById("result").innerHTML =
+            "Please fill all fields";
 
-if(!distance){
+            return;
+        }
 
-document.getElementById("result").innerHTML =
-"Please fill all fields";
+        distance =
+        Math.abs(entry - sl);
 
-return;
+    } else {
 
-}
+        distance =
+        parseFloat(
+        document.getElementById("distanceInput").value
+        );
 
-}
+        if (!distance) {
 
-let lot =
-riskAmount / (distance * 10);
+            document.getElementById("result").innerHTML =
+            "Please fill all fields";
 
-document.getElementById("result").innerHTML =
+            return;
+        }
 
-"Risk Amount: $" +
-riskAmount.toFixed(2)
+    }
 
-+
+    let lot =
+    riskAmount / (distance * 10);
 
-"<br><br>Price Distance: $" +
-distance.toFixed(2)
+    document.getElementById("result").innerHTML =
 
-+
+    "<span class='gold'>Risk Amount:</span> $" +
+    riskAmount.toFixed(2)
 
-"<br><br>Suggested Lot Size: " +
-lot.toFixed(2);
+    +
 
-}
+    "<br><span class='gold'>Price Distance:</span> $" +
+    distance.toFixed(2)
+
+    +
+
+    "<br><br><span class='green'>Suggested Lot Size: " +
+    lot.toFixed(2) +
+    "</span>";
+
 }
 
 </script>
 
 </body>
-  </html>
+</html>
