@@ -171,13 +171,7 @@ parseFloat(document.getElementById("balance").value);
 let risk =
 parseFloat(document.getElementById("risk").value);
 
-let entry =
-parseFloat(document.getElementById("entry").value);
-
-let sl =
-parseFloat(document.getElementById("sl").value);
-
-if(!balance || !risk || !entry || !sl){
+if(!balance || !risk){
 
 document.getElementById("result").innerHTML =
 "Please fill all fields";
@@ -189,14 +183,70 @@ return;
 let riskAmount =
 balance * (risk/100);
 
-let distance =
-Math.abs(entry - sl);
+let mode =
+document.getElementById("mode").value;
+
+let distance;
+
+if(mode=="entry"){
+
+let entry =
+parseFloat(document.getElementById("entry").value);
+
+let sl =
+parseFloat(document.getElementById("sl").value);
+
+if(!entry || !sl){
 
 document.getElementById("result").innerHTML =
-"Risk Amount: $" + riskAmount.toFixed(2) +
-"<br><br>Price Distance: " +
-distance.toFixed(2);
+"Please fill all fields";
 
+return;
+
+}
+
+distance =
+Math.abs(entry-sl);
+
+}
+
+else{
+
+distance =
+parseFloat(
+document.getElementById("distanceInput").value
+);
+
+if(!distance){
+
+document.getElementById("result").innerHTML =
+"Please fill all fields";
+
+return;
+
+}
+
+}
+
+let lot =
+riskAmount / (distance * 10);
+
+document.getElementById("result").innerHTML =
+
+"Risk Amount: $" +
+riskAmount.toFixed(2)
+
++
+
+"<br><br>Price Distance: $" +
+distance.toFixed(2)
+
++
+
+"<br><br>Suggested Lot Size: " +
+lot.toFixed(2);
+
+}
 }
 
 </script>
