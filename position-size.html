@@ -162,11 +162,86 @@ function changeMode() {
 
 function calculate() {
 
-    alert("Tombol Calculate Berhasil Diklik");
+    let balance =
+    parseFloat(document.getElementById("balance").value);
+
+    let risk =
+    parseFloat(document.getElementById("risk").value);
+
+    if (!balance || !risk) {
+
+        document.getElementById("result").innerHTML =
+        "Please fill all fields";
+
+        return;
+    }
+
+    let riskAmount =
+    balance * (risk / 100);
+
+    let mode =
+    document.getElementById("mode").value;
+
+    let distance;
+
+    if (mode === "entry") {
+
+        let entry =
+        parseFloat(document.getElementById("entry").value);
+
+        let sl =
+        parseFloat(document.getElementById("sl").value);
+
+        if (!entry || !sl) {
+
+            document.getElementById("result").innerHTML =
+            "Please fill all fields";
+
+            return;
+        }
+
+        distance =
+        Math.abs(entry - sl);
+
+    } else {
+
+        distance =
+        parseFloat(
+        document.getElementById("distanceInput").value
+        );
+
+        if (!distance) {
+
+            document.getElementById("result").innerHTML =
+            "Please fill all fields";
+
+            return;
+        }
+
+    }
+
+    let lot =
+    riskAmount / (distance * 10);
+
+    document.getElementById("result").innerHTML =
+
+    "<span class='gold'>Risk Amount:</span> $" +
+    riskAmount.toFixed(2)
+
+    +
+
+    "<br><span class='gold'>Price Distance:</span> $" +
+    distance.toFixed(2)
+
+    +
+
+    "<br><br><span class='green'>Suggested Lot Size: " +
+    lot.toFixed(2) +
+    "</span>";
 
 }
 
 </script>
 
 </body>
-</html>
+    </html>
