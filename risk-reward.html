@@ -1,11 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>Risk Reward Calculator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Risk Reward Calculator - TradingToolsID</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0F172A;
+color:white;
+}
+
+header{
+background:#081225;
+padding:25px;
+text-align:center;
+border-bottom:3px solid #FBBF24;
+}
+
+header h1{
+color:#FBBF24;
+margin:0;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1E293B;
+padding:25px;
+border-radius:15px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#FBBF24;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+background:#081225;
+padding:20px;
+border-radius:10px;
+text-align:center;
+line-height:1.8;
+}
+
+.gold{
+color:#FBBF24;
+font-weight:bold;
+}
+
+.green{
+color:#22C55E;
+font-size:24px;
+font-weight:bold;
+}
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+border-top:1px solid #334155;
+color:#CBD5E1;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+}
+
+.active{
+color:#FBBF24;
+}
+
+</style>
 </head>
+
 <body>
 
-<h1>Risk Reward Calculator</h1>
+<header>
+
+<h1>TradingToolsID</h1>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="calculators.html" class="active">
+Calculators
+</a>
+
+<a href="#">
+Market
+</a>
+
+<a href="#">
+Copy Trading
+</a>
+
+</nav>
+
+<p style="margin-top:15px;">
+Risk Reward Calculator
+</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<input type="number"
+id="risk"
+placeholder="Risk ($)">
+
+<input type="number"
+id="reward"
+placeholder="Reward ($)">
+
+<button onclick="calculate()">
+Calculate
+</button>
+
+<div class="result" id="result">
+Result will appear here
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 TradingToolsID</p>
+
+<p>
+Founder & Developer: A Ridwan R
+</p>
+
+</footer>
+
+<script>
+
+function calculate(){
+
+let risk =
+parseFloat(
+document.getElementById("risk").value
+);
+
+let reward =
+parseFloat(
+document.getElementById("reward").value
+);
+
+if(!risk || !reward){
+
+document.getElementById("result").innerHTML =
+"Please fill all fields";
+
+return;
+
+}
+
+let ratio =
+reward / risk;
+
+document.getElementById("result").innerHTML =
+
+"<span class='gold'>Risk:</span> $" +
+risk.toFixed(2)
+
++
+
+"<br><span class='gold'>Reward:</span> $" +
+reward.toFixed(2)
+
++
+
+"<br><br><span class='green'>Risk Reward Ratio = 1 : " +
+ratio.toFixed(2) +
+"</span>";
+
+}
+
+</script>
 
 </body>
-</html>
+  </html>
