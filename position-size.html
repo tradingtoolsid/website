@@ -1,1 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Position Size Calculator - TradingToolsID</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0F172A;
+color:white;
+}
+
+header{
+background:#081225;
+padding:25px;
+text-align:center;
+border-bottom:3px solid #FBBF24;
+}
+
+header h1{
+color:#FBBF24;
+margin:0;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1E293B;
+padding:25px;
+border-radius:15px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#FBBF24;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+background:#081225;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
 <h1>Position Size Calculator</h1>
+<p>TradingToolsID</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<input type="number" id="balance" placeholder="Account Balance ($)">
+
+<input type="number" id="risk" placeholder="Risk (%)">
+
+<input type="number" id="entry" placeholder="Entry Price">
+
+<input type="number" id="sl" placeholder="Stop Loss Price">
+
+<button onclick="calculate()">
+Calculate
+</button>
+
+<div class="result" id="result">
+Result will appear here
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function calculate(){
+
+let balance =
+parseFloat(document.getElementById("balance").value);
+
+let risk =
+parseFloat(document.getElementById("risk").value);
+
+let entry =
+parseFloat(document.getElementById("entry").value);
+
+let sl =
+parseFloat(document.getElementById("sl").value);
+
+if(!balance || !risk || !entry || !sl){
+
+document.getElementById("result").innerHTML =
+"Please fill all fields";
+
+return;
+
+}
+
+let riskAmount =
+balance * (risk/100);
+
+let distance =
+Math.abs(entry - sl);
+
+document.getElementById("result").innerHTML =
+"Risk Amount: $" + riskAmount.toFixed(2) +
+"<br><br>Price Distance: " +
+distance.toFixed(2);
+
+}
+
+</script>
+
+</body>
+  </html>
