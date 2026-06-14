@@ -81,6 +81,27 @@ text-align:center;
 <div class="container">
 
 <div class="card">
+  <h3 style="text-align:center;color:#FBBF24;">
+Calculation Mode
+</h3>
+
+<select id="mode" onchange="changeMode()" style="
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border-radius:10px;
+font-size:16px;
+">
+
+<option value="entry">
+Entry + Stop Loss
+</option>
+
+<option value="distance">
+Dollar Distance
+</option>
+
+</select>
 
 <input type="number" id="balance" placeholder="Account Balance ($)">
 
