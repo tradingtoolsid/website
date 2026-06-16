@@ -224,8 +224,119 @@ Founder & Developer: A Ridwan R
 
 <script>
 
-/* JAVASCRIPT AKAN SAYA KIRIM PADA BAGIAN 2 */
+function updatePlaceholder(){
 
+let market =
+document.getElementById("market").value;
+
+let movement =
+document.getElementById("movement");
+
+if(market=="XAUUSD"){
+
+movement.placeholder =
+"Price Movement ($)";
+
+}
+
+else{
+
+movement.placeholder =
+"Price Movement (Pips)";
+
+}
+
+}
+
+document.getElementById("market")
+.addEventListener(
+"change",
+updatePlaceholder
+);
+
+function calculate(){
+
+let market =
+document.getElementById("market").value;
+
+let lot =
+parseFloat(
+document.getElementById("lot").value
+);
+
+let movement =
+parseFloat(
+document.getElementById("movement").value
+);
+
+if(!lot || !movement){
+
+document.getElementById("result").innerHTML =
+"Please fill all fields";
+
+return;
+
+}
+
+let profitPerUnit;
+let totalProfit;
+let unitText;
+
+if(market=="XAUUSD"){
+
+profitPerUnit =
+lot * 100;
+
+totalProfit =
+profitPerUnit * movement;
+
+unitText =
+"$1 Movement";
+
+}
+
+else{
+
+profitPerUnit =
+lot * 10;
+
+totalProfit =
+profitPerUnit * movement;
+
+unitText =
+"Pip";
+
+}
+
+document.getElementById("result").innerHTML =
+
+"<b>Market:</b> " +
+market +
+
+"<br><br><b>Lot Size:</b> " +
+lot.toFixed(2)
+
++
+
+"<br><br><b>Price Movement:</b> " +
+movement.toFixed(2)
+
++
+
+"<br><br><b>Profit per " +
+unitText +
+":</b> $" +
+profitPerUnit.toFixed(2)
+
++
+
+"<br><br><span style='color:#22C55E;font-size:24px;font-weight:bold;'>Potential Profit/Loss = $" +
+totalProfit.toFixed(2) +
+"</span>";
+
+}
+
+updatePlaceholder();
 </script>
 
 </body>
