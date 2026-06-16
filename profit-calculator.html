@@ -1,1 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Trade Profit Calculator - TradingToolsID</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0F172A;
+color:white;
+}
+
+header{
+background:#081225;
+padding:25px;
+text-align:center;
+border-bottom:3px solid #FBBF24;
+}
+
+header h1{
+color:#FBBF24;
+margin:0;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#FBBF24;
+}
+
+.active{
+color:#FBBF24;
+}
+
+.calc-nav{
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.calc-nav a{
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+background:#334155;
+color:white;
+font-size:14px;
+}
+
+.calc-nav .active-calc{
+background:#FBBF24;
+color:#000;
+font-weight:bold;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1E293B;
+padding:25px;
+border-radius:15px;
+}
+
+.card h2{
+text-align:center;
+color:#FBBF24;
+margin-top:0;
+}
+
+select,
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#FBBF24;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+.result{
+margin-top:20px;
+background:#081225;
+padding:20px;
+border-radius:10px;
+text-align:center;
+line-height:1.8;
+}
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+border-top:1px solid #334155;
+color:#CBD5E1;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>TradingToolsID</h1>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="calculators.html" class="active">
+Calculators
+</a>
+
+<a href="#">Market</a>
+
+<a href="#">Copy Trading</a>
+
+</nav>
+
+<div class="calc-nav">
+
+<a href="position-size.html">
+Position Size
+</a>
+
+<a href="risk-reward.html">
+Risk Reward
+</a>
+
+<a href="profit-calculator.html" class="active-calc">
+Trade Profit
+</a>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Trade Profit Calculator</h2>
+
+<p style="text-align:center;color:#CBD5E1;">
+Estimate potential profit or loss based on lot size and market movement.
+</p>
+
+<select id="market">
+
+<option value="XAUUSD">XAUUSD</option>
+<option value="EURUSD">EURUSD</option>
+<option value="GBPUSD">GBPUSD</option>
+<option value="USDJPY">USDJPY</option>
+
+</select>
+
+<input
+type="number"
+id="lot"
+placeholder="Lot Size">
+
+<input
+type="number"
+id="movement"
+placeholder="Price Movement">
+
+<button onclick="calculate()">
+Calculate
+</button>
+
+<div class="result" id="result">
+Result will appear here
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 TradingToolsID</p>
+
+<p>
+Founder & Developer: A Ridwan R
+</p>
+
+</footer>
+
+<script>
+
+/* JAVASCRIPT AKAN SAYA KIRIM PADA BAGIAN 2 */
+
+</script>
+
+</body>
+  </html>
