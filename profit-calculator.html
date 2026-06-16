@@ -309,30 +309,57 @@ unitText =
 }
 
 document.getElementById("result").innerHTML =
+document.getElementById("result").innerHTML =
 
-"<b>Market:</b> " +
+"<div style='background:#0F172A;padding:25px;border-radius:15px;border:2px solid #FBBF24;'>"
+
++
+
+"<h3 style='color:#FBBF24;margin-top:0;'>Trade Summary</h3>"
+
++
+
+"<p><b>Market</b><br>" +
 market +
-
-"<br><br><b>Lot Size:</b> " +
-lot.toFixed(2)
+"</p>"
 
 +
 
-"<br><br><b>Price Movement:</b> " +
-movement.toFixed(2)
+"<p><b>Lot Size</b><br>" +
+lot.toFixed(2) +
+"</p>"
 
 +
 
-"<br><br><b>Profit per " +
+"<p><b>Price Movement</b><br>" +
+movement.toFixed(2) +
+"</p>"
+
++
+
+"<p><b>Profit per " +
 unitText +
-":</b> $" +
-profitPerUnit.toFixed(2)
+"</b><br>$" +
+profitPerUnit.toFixed(2) +
+"</p>"
 
 +
 
-"<br><br><span style='color:#22C55E;font-size:24px;font-weight:bold;'>Potential Profit/Loss = $" +
+"<hr style='border:1px solid #334155;'>"
+
++
+
+"<div style='font-size:32px;font-weight:bold;color:#22C55E;'>$" +
 totalProfit.toFixed(2) +
-"</span>";
+"</div>"
+
++
+
+"<div style='color:#CBD5E1;margin-top:10px;'>Potential Profit / Loss</div>"
+
++
+
+"</div>";
 
 }
 
