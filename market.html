@@ -180,6 +180,64 @@ Founder & Developer: A Ridwan R
 </p>
 
 </footer>
+<script>
 
+function updateSessions(){
+
+let now = new Date();
+
+let utcHour = now.getUTCHours();
+
+updateSession(
+"sydney",
+utcHour >= 21 || utcHour < 6
+);
+
+updateSession(
+"tokyo",
+utcHour >= 0 && utcHour < 9
+);
+
+updateSession(
+"london",
+utcHour >= 8 && utcHour < 17
+);
+
+updateSession(
+"newyork",
+utcHour >= 13 && utcHour < 22
+);
+
+}
+
+function updateSession(id,isOpen){
+
+let el =
+document.getElementById(id);
+
+if(isOpen){
+
+el.innerHTML =
+"<span class='open'>OPEN</span>";
+
+}
+
+else{
+
+el.innerHTML =
+"<span class='closed'>CLOSED</span>";
+
+}
+
+}
+
+updateSessions();
+
+setInterval(
+updateSessions,
+60000
+);
+
+</script>
 </body>
   </html>
