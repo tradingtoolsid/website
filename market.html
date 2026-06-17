@@ -251,6 +251,17 @@ setInterval(
 updateSessions,
 60000
 );
+  function updateUTCTime(){
+
+let now = new Date();
+
+let utcTime =
+now.toUTCString().split(" ")[4];
+
+document.getElementById("utcTime")
+.innerHTML = utcTime + " UTC";
+
+  }
 
 </script>
 </body>
