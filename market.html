@@ -246,11 +246,14 @@ el.innerHTML =
 }
 
 updateSessions();
+updateUTCTime();
 
-setInterval(
-updateSessions,
-60000
-);
+setInterval(function(){
+
+updateSessions();
+updateUTCTime();
+
+},1000);
   function updateUTCTime(){
 
 let now = new Date();
