@@ -249,6 +249,9 @@ return;
 let remaining =
 balance * (1 - drawdown / 100);
 
+let drawdownAmount =
+balance - remaining;
+
 let recovery =
 (
 (balance - remaining)
@@ -256,13 +259,48 @@ let recovery =
 remaining
 ) * 100;
 
+let riskLevel = "";
+
+if(drawdown <= 10){
+
+riskLevel = "LOW";
+
+}
+else if(drawdown <= 20){
+
+riskLevel = "MODERATE";
+
+}
+else if(drawdown <= 30){
+
+riskLevel = "HIGH";
+
+}
+else{
+
+riskLevel = "DANGEROUS";
+
+}
+
 document.getElementById("remaining")
 .innerHTML =
 "$" + remaining.toFixed(2);
 
+document.getElementById("drawdownAmount")
+.innerHTML =
+"$" + drawdownAmount.toFixed(2);
+
 document.getElementById("recovery")
 .innerHTML =
 recovery.toFixed(2) + "%";
+
+document.getElementById("recoveryAmount")
+.innerHTML =
+"$" + drawdownAmount.toFixed(2);
+
+document.getElementById("riskLevel")
+.innerHTML =
+riskLevel;
 
 document.getElementById("result")
 .style.display = "block";
