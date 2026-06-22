@@ -316,6 +316,15 @@ trend +
 
 levels.forEach(level=>{
 
+let color = "white";
+
+if(
+level[0]=="50%" ||
+level[0]=="61.8%"
+){
+color = "#FBBF24";
+}
+
 html +=
 
 '<div class="level">' +
