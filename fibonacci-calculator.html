@@ -297,7 +297,22 @@ let levels = [
 
 ];
   
-let html = "";
+let trend =
+high > low
+? "Bullish"
+: "Bearish";
+
+let html =
+
+'<div style="background:#111827;padding:15px;border-radius:10px;margin-bottom:15px;text-align:center;">' +
+
+'<div style="color:#FBBF24;font-size:22px;font-weight:bold;">' +
+trend +
+' Trend</div>' +
+
+'<div style="color:#CBD5E1;margin-top:8px;">Golden Zone: 50% - 61.8%</div>' +
+
+'</div>';
 
 levels.forEach(level=>{
 
