@@ -272,36 +272,6 @@ Founder & Developer: A Ridwan R
 
 <script>
 
-function updatePlaceholder(){
-
-let market =
-document.getElementById("market").value;
-
-let movement =
-document.getElementById("movement");
-
-if(market=="XAUUSD"){
-
-movement.placeholder =
-"Price Movement ($)";
-
-}
-
-else{
-
-movement.placeholder =
-"Price Movement (Pips)";
-
-}
-
-}
-
-document.getElementById("market")
-.addEventListener(
-"change",
-updatePlaceholder
-);
-
 function calculate(){
 
 let market =
