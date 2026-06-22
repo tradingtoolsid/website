@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
+<title>Fibonacci Calculator - TradingToolsID</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0F172A;
+color:white;
+}
+
+header{
+background:#081225;
+padding:25px;
+text-align:center;
+border-bottom:3px solid #FBBF24;
+}
+
+header h1{
+margin:0;
+color:#FBBF24;
+}
+
+nav{
+margin-top:15px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.active{
+color:#FBBF24;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1E293B;
+padding:25px;
+border-radius:15px;
+}
+
+.card h2{
+color:#FBBF24;
+text-align:center;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#FBBF24;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+background:#081225;
+padding:20px;
+border-radius:10px;
+display:none;
+}
+
+.level{
+padding:10px;
+margin-bottom:8px;
+background:#111827;
+border-radius:8px;
+display:flex;
+justify-content:space-between;
+}
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+border-top:1px solid #334155;
+color:#CBD5E1;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>TradingToolsID</h1>
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="calculators.html"
+class="active">
+Calculators
+</a>
+
+<a href="market.html">
+Market
+</a>
+
+<a href="#">
+Copy Trading
+</a>
+
+</nav>
+
+<div style="
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+padding:0 10px;
+">
+
+<a href="position-size.html"
+style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Position Size
+</a>
+
+<a href="risk-reward.html"
+style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Risk Reward
+</a>
+
+<a href="profit-calculator.html"
+style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Trade Profit
+</a>
+
+<a href="drawdown-calculator.html"
+style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Drawdown
+</a>
+
+<a href="fibonacci-calculator.html"
+style="
+background:#FBBF24;
+color:#000;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
+Fibonacci
+</a>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Fibonacci Calculator</h2>
+
+<input
+type="number"
+id="high"
+placeholder="Swing High">
+
+<input
+type="number"
+id="low"
+placeholder="Swing Low">
+
+<button onclick="calculateFib()">
+Calculate
+</button>
+
+<div class="result"
+id="result">
+
+<div id="fibLevels"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 TradingToolsID</p>
+
+<p>
+Founder & Developer: A Ridwan R
+</p>
+
+</footer>
+
+<script>
+
+function calculateFib(){
+
+let high =
+parseFloat(
+document.getElementById("high").value
+);
+
+let low =
+parseFloat(
+document.getElementById("low").value
+);
+
+if(
+isNaN(high) ||
+isNaN(low)
+){
+return;
+}
+
+let diff =
+high - low;
+
+let levels = [
+
+["0%",high],
+
+["23.6%",
+high - diff*0.236],
+
+["38.2%",
+high - diff*0.382],
+
+["50%",
+high - diff*0.5],
+
+["61.8%",
+high - diff*0.618],
+
+["78.6%",
+high - diff*0.786],
+
+["100%",low]
+
+];
+
+let html = "";
+
+levels.forEach(level=>{
+
+html +=
+
+'<div class="level">' +
+
+'<span>' +
+level[0] +
+'</span>' +
+
+'<span>' +
+level[1].toFixed(2) +
+'</span>' +
+
+'</div>';
+
+});
+
+document
+.getElementById("fibLevels")
+.innerHTML = html;
+
+document
+.getElementById("result")
+.style.display = "block";
+
+}
+
+</script>
+
+</body>
+  </html>
