@@ -221,15 +221,32 @@ Estimate potential profit or loss based on lot size and market movement.
 
 </select>
 
+<select id="direction">
+
+<option value="buy">
+BUY
+</option>
+
+<option value="sell">
+SELL
+</option>
+
+</select>
+
+<input
+type="number"
+id="entry"
+placeholder="Entry Price">
+
+<input
+type="number"
+id="exit"
+placeholder="Exit Price">
+
 <input
 type="number"
 id="lot"
 placeholder="Lot Size">
-
-<input
-type="number"
-id="movement"
-placeholder="Price Movement">
 
 <button onclick="calculate()">
 Calculate
