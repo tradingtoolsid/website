@@ -277,17 +277,29 @@ function calculate(){
 let market =
 document.getElementById("market").value;
 
+let direction =
+document.getElementById("direction").value;
+
+let entry =
+parseFloat(
+document.getElementById("entry").value
+);
+
+let exit =
+parseFloat(
+document.getElementById("exit").value
+);
+
 let lot =
 parseFloat(
 document.getElementById("lot").value
 );
 
-let movement =
-parseFloat(
-document.getElementById("movement").value
-);
-
-if(!lot || !movement){
+if(
+!entry ||
+!exit ||
+!lot
+){
 
 document.getElementById("result").innerHTML =
 "Please fill all fields";
@@ -296,60 +308,71 @@ return;
 
 }
 
-let profitPerUnit;
-let totalProfit;
-let unitText;
+let movement;
+
+if(direction=="buy"){
+
+movement = exit - entry;
+
+}else{
+
+movement = entry - exit;
+
+}
+
+let profit;
 
 if(market=="XAUUSD"){
 
-profitPerUnit =
-lot * 100;
+profit =
+movement * 100 * lot;
 
-totalProfit =
-profitPerUnit * movement;
+}else{
 
-unitText =
-"$1 Movement";
-
-}
-
-else{
-
-profitPerUnit =
-lot * 10;
-
-totalProfit =
-profitPerUnit * movement;
-
-unitText =
-"Pip";
+profit =
+movement * 10000 * lot;
 
 }
+
+let color =
+profit >= 0
+? "#22C55E"
+: "#EF4444";
 
 document.getElementById("result").innerHTML =
 
 "<b>Market:</b> " +
 market +
 
+"<br><br><b>Direction:</b> " +
+direction.toUpperCase() +
+
+"<br><br><b>Entry:</b> " +
+entry +
+
+"<br><br><b>Exit:</b> " +
+exit +
+
+"<br><br><b>Price Movement:</b> " +
+movement.toFixed(4)
+
++
+
 "<br><br><b>Lot Size:</b> " +
 lot.toFixed(2)
 
 +
 
-"<br><br><b>Price Movement:</b> " +
-movement.toFixed(2)
+"<br><br><span style='color:" +
+color +
+";font-size:26px;font-weight:bold;'>
+
+Profit / Loss = $" +
+
+profit.toFixed(2)
 
 +
 
-"<br><br><b>Profit per " +
-unitText +
-":</b> $" +
-profitPerUnit.toFixed(2)
-
-+
-
-"<br><br><span style='color:#22C55E;font-size:24px;font-weight:bold;'>Potential Profit/Loss = $" +
-totalProfit.toFixed(2) +
 "</span>";
 
 }
