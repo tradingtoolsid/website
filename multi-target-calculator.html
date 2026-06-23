@@ -1,1 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
+<title>Multi Target Calculator - TradingToolsID</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0F172A;
+color:white;
+}
+
+header{
+background:#081225;
+padding:25px;
+text-align:center;
+border-bottom:3px solid #FBBF24;
+}
+
+header h1{
+margin:0;
+color:#FBBF24;
+}
+
+nav{
+margin-top:15px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.active{
+color:#FBBF24;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1E293B;
+padding:25px;
+border-radius:15px;
+}
+
+.card h2{
+text-align:center;
+color:#FBBF24;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#FBBF24;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+background:#081225;
+padding:20px;
+border-radius:10px;
+display:none;
+}
+
+.result-card{
+background:#111827;
+padding:15px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+border-top:1px solid #334155;
+color:#CBD5E1;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>TradingToolsID</h1>
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="calculators.html"
+class="active">
+Calculators
+</a>
+
+<a href="market.html">
+Market
+</a>
+
+<a href="#">
+Copy Trading
+</a>
+
+</nav>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Multi Target Calculator</h2>
+
+<input
+type="number"
+id="entry"
+placeholder="Entry Price">
+
+<input
+type="number"
+id="sl"
+placeholder="Stop Loss">
+
+<input
+type="number"
+id="tp1"
+placeholder="Take Profit 1">
+
+<input
+type="number"
+id="tp2"
+placeholder="Take Profit 2">
+
+<input
+type="number"
+id="tp3"
+placeholder="Take Profit 3">
+
+<button onclick="calculateTargets()">
+Calculate
+</button>
+
+<div class="result"
+id="result">
+
+<div id="output"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 TradingToolsID</p>
+
+<p>
+Founder & Developer: A Ridwan R
+</p>
+
+</footer>
+
+<script>
+
+function calculateTargets(){
+
+let entry =
+parseFloat(
+document.getElementById("entry").value
+);
+
+let sl =
+parseFloat(
+document.getElementById("sl").value
+);
+
+let tp1 =
+parseFloat(
+document.getElementById("tp1").value
+);
+
+let tp2 =
+parseFloat(
+document.getElementById("tp2").value
+);
+
+let tp3 =
+parseFloat(
+document.getElementById("tp3").value
+);
+
+if(
+isNaN(entry) ||
+isNaN(sl) ||
+isNaN(tp1) ||
+isNaN(tp2) ||
+isNaN(tp3)
+){
+return;
+}
+
+let risk =
+Math.abs(entry - sl);
+
+function rr(tp){
+
+return (
+Math.abs(tp - entry)
+/ risk
+).toFixed(2);
+
+}
+
+let html = "";
+
+html +=
+'<div class="result-card"><b>TP1</b><br>RR = 1 : '
++ rr(tp1) +
+'</div>';
+
+html +=
+'<div class="result-card"><b>TP2</b><br>RR = 1 : '
++ rr(tp2) +
+'</div>';
+
+html +=
+'<div class="result-card"><b>TP3</b><br>RR = 1 : '
++ rr(tp3) +
+'</div>';
+
+document
+.getElementById("output")
+.innerHTML = html;
+
+document
+.getElementById("result")
+.style.display = "block";
+
+}
+
+</script>
+
+</body>
+  </html>
