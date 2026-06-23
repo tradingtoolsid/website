@@ -248,6 +248,14 @@ return;
 let risk =
 Math.abs(entry - sl);
 
+let direction =
+entry > sl
+? "BUY"
+: "SELL";
+
+let riskDollar =
+risk * 100 * lot;
+  
 function rr(tp){
 
 return (
