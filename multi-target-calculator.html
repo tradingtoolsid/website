@@ -275,7 +275,17 @@ Math.abs(tp - entry)
 
 }
 
-let html = "";
+let html =
+
+'<div class="result-card">' +
+'<b>Direction</b><br>' +
+direction +
+'</div>' +
+
+'<div class="result-card">' +
+'<b>Risk Amount</b><br>$' +
+riskDollar.toFixed(2) +
+'</div>';
 
 html +=
 '<div class="result-card"><b>TP1</b><br>RR = 1 : '
