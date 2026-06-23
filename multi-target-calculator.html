@@ -280,6 +280,58 @@ Math.abs(tp - entry)
 
 }
 
+let bestRR = Math.max(
+parseFloat(rr(tp1)),
+parseFloat(rr(tp2)),
+parseFloat(rr(tp3))
+);
+
+let bestTarget;
+
+if(
+bestRR ==
+parseFloat(rr(tp1))
+){
+
+bestTarget = "TP1";
+
+}
+else if(
+bestRR ==
+parseFloat(rr(tp2))
+){
+
+bestTarget = "TP2";
+
+}
+else{
+
+bestTarget = "TP3";
+
+}
+
+let rating;
+let ratingColor;
+
+if(bestRR < 1.5){
+
+rating = "POOR";
+ratingColor = "#EF4444";
+
+}
+else if(bestRR < 3){
+
+rating = "GOOD";
+ratingColor = "#FBBF24";
+
+}
+else{
+
+rating = "EXCELLENT";
+ratingColor = "#22C55E";
+
+}
+
 let html =
 
 '<div class="result-card">' +
