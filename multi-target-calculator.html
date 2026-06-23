@@ -258,6 +258,16 @@ risk * 100 * lot;
   
 function rr(tp){
 
+function profit(tp){
+
+return (
+Math.abs(tp-entry)
+* 100
+* lot
+).toFixed(2);
+
+}
+  
 return (
 Math.abs(tp - entry)
 / risk
