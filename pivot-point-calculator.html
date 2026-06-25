@@ -1,1 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
+<title>Pivot Point Calculator - TradingToolsID</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0F172A;
+color:white;
+}
+
+header{
+background:#081225;
+padding:25px;
+text-align:center;
+border-bottom:3px solid #FBBF24;
+}
+
+header h1{
+margin:0;
+color:#FBBF24;
+}
+
+nav{
+margin-top:15px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+color:#FBBF24;
+}
+
+.active{
+color:#FBBF24;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1E293B;
+padding:25px;
+border-radius:15px;
+}
+
+.card h2{
+text-align:center;
+color:#FBBF24;
+margin-top:0;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#FBBF24;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+.result{
+margin-top:20px;
+background:#081225;
+padding:20px;
+border-radius:10px;
+text-align:center;
+line-height:1.8;
+}
+
+.result-card{
+background:#111827;
+padding:15px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.result-title{
+color:#CBD5E1;
+font-size:14px;
+margin-bottom:5px;
+}
+
+.result-value{
+font-size:24px;
+font-weight:bold;
+color:#FBBF24;
+}
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+border-top:1px solid #334155;
+color:#CBD5E1;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>TradingToolsID</h1>
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="calculators.html"
+class="active">
+Calculators
+</a>
+
+<a href="market.html">
+Market
+</a>
+
+<a href="#">
+Copy Trading
+</a>
+
+</nav>
+
+<div style="
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+padding:0 10px;
+">
+
+<a href="position-size.html" style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Position Size
+</a>
+
+<a href="risk-reward.html" style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Risk Reward
+</a>
+
+<a href="profit-calculator.html" style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Trade Profit
+</a>
+
+<a href="drawdown-calculator.html" style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Drawdown
+</a>
+
+<a href="fibonacci-calculator.html" style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Fibonacci
+</a>
+
+<a href="multi-target-calculator.html" style="
+background:#334155;
+color:white;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+">
+Multi Target
+</a>
+
+<a href="pivot-point-calculator.html" style="
+background:#FBBF24;
+color:#000;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
+Pivot Point
+</a>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Pivot Point Calculator</h2>
+
+<input
+type="number"
+id="high"
+placeholder="Previous High">
+
+<input
+type="number"
+id="low"
+placeholder="Previous Low">
+
+<input
+type="number"
+id="close"
+placeholder="Previous Close">
+
+<button onclick="calculatePivot()">
+Calculate
+</button>
+
+<div class="result" id="result">
+Result will appear here
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 TradingToolsID</p>
+
+<p>
+Founder & Developer: A Ridwan R
+</p>
+
+</footer>
+
+<script>
+
+function calculatePivot(){
+
+let high =
+parseFloat(
+document.getElementById("high").value
+);
+
+let low =
+parseFloat(
+document.getElementById("low").value
+);
+
+let close =
+parseFloat(
+document.getElementById("close").value
+);
+
+if(
+isNaN(high) ||
+isNaN(low) ||
+isNaN(close)
+){
+
+document.getElementById("result")
+.innerHTML =
+"Please fill all fields";
+
+return;
+
+}
+
+let pp =
+(high + low + close) / 3;
+
+let r1 =
+(2 * pp) - low;
+
+let s1 =
+(2 * pp) - high;
+
+let r2 =
+pp + (high - low);
+
+let s2 =
+pp - (high - low);
+
+document.getElementById("result")
+.innerHTML =
+
+'<div class="result-card">' +
+'<div class="result-title">Pivot Point</div>' +
+'<div class="result-value">' +
+pp.toFixed(2) +
+'</div></div>' +
+
+'<div class="result-card">' +
+'<div class="result-title">Resistance 1</div>' +
+'<div class="result-value">' +
+r1.toFixed(2) +
+'</div></div>' +
+
+'<div class="result-card">' +
+'<div class="result-title">Resistance 2</div>' +
+'<div class="result-value">' +
+r2.toFixed(2) +
+'</div></div>' +
+
+'<div class="result-card">' +
+'<div class="result-title">Support 1</div>' +
+'<div class="result-value">' +
+s1.toFixed(2) +
+'</div></div>' +
+
+'<div class="result-card">' +
+'<div class="result-title">Support 2</div>' +
+'<div class="result-value">' +
+s2.toFixed(2) +
+'</div></div>';
+
+}
+
+</script>
+
+</body>
+  </html>
