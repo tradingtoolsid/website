@@ -391,6 +391,15 @@ document.getElementById("result")
 '<div class="result-value gold">' +
 pivotType.toUpperCase() +
 '</div></div>' +
+
+'<div class="result-card">' +
+'<div class="result-title">Calculation Type</div>' +
+'<div class="result-value gold">' +
+(pivotType=="classic"
+? "Traditional Formula"
+: "Fibonacci Ratios 38.2% • 61.8% • 100%") +
+'</div></div>' +
+  
 '<div class="result-title">Market Bias</div>' +
 '<div class="result-value gold">' +
 bias +
