@@ -75,9 +75,15 @@ grid-template-columns:1fr;
 .card{
 background:#1E293B;
 padding:25px;
-margin-bottom:20px;
+margin-bottom:0;
 border-radius:15px;
 box-shadow:0 0 15px rgba(0,0,0,0.3);
+transition:all 0.25s ease;
+}
+
+.card:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
 }
 
 .card h2{
