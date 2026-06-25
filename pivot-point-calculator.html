@@ -345,6 +345,17 @@ pp + (high - low);
 let s2 =
 pp - (high - low);
 
+let r3 =
+high + 2 * (pp - low);
+
+let s3 =
+low - 2 * (high - pp);
+
+let bias =
+close > pp
+? "Bullish"
+: "Bearish";
+
 document.getElementById("result")
 .innerHTML =
 
