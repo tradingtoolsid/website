@@ -349,23 +349,34 @@ return;
 let pp =
 (high + low + close) / 3;
 
-let r1 =
-(2 * pp) - low;
+let r1,s1,r2,s2,r3,s3;
 
-let s1 =
-(2 * pp) - high;
+if(pivotType=="classic"){
 
-let r2 =
-pp + (high - low);
+r1 = (2 * pp) - low;
+s1 = (2 * pp) - high;
 
-let s2 =
-pp - (high - low);
+r2 = pp + (high - low);
+s2 = pp - (high - low);
 
-let r3 =
-high + 2 * (pp - low);
+r3 = high + 2 * (pp - low);
+s3 = low - 2 * (high - pp);
 
-let s3 =
-low - 2 * (high - pp);
+}else{
+
+let range =
+high - low;
+
+r1 = pp + (range * 0.382);
+s1 = pp - (range * 0.382);
+
+r2 = pp + (range * 0.618);
+s2 = pp - (range * 0.618);
+
+r3 = pp + (range * 1.000);
+s3 = pp - (range * 1.000);
+
+}
 
 let bias =
 close > pp
