@@ -57,6 +57,21 @@ margin:auto;
 padding:20px;
 }
 
+.calculator-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+/* Mobile tetap 1 kolom */
+@media (max-width:768px){
+
+.calculator-grid{
+grid-template-columns:1fr;
+}
+
+}
+
 .card{
 background:#1E293B;
 padding:25px;
