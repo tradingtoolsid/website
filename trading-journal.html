@@ -241,7 +241,12 @@ Trading Journal
 <input
 type="number"
 id="startingBalance"
-placeholder="Starting Balance ($)">
+placeholder="Starting Balance ($)"
+onchange="saveBalance()">
+
+<div class="balance-note">
+Balance is stored locally and remains available on this browser.
+</div>
 
 <input
 type="text"
