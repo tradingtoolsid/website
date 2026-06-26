@@ -323,17 +323,40 @@ localStorage.getItem("journal")
 
 let html = "";
 
-if(trades.length===0){
+let totalTrades = trades.length;
+let wins = 0;
+let totalProfit = 0;
+let totalLoss = 0;
 
-html =
+if(totalTrades===0){
+
+document.getElementById("stats").innerHTML = "";
+
+document.getElementById("history").innerHTML =
 "Result will appear here";
+
+return;
 
 }
 
 trades.forEach(trade=>{
 
+let result =
+parseFloat(trade.result);
+
+if(result > 0){
+
+wins++;
+totalProfit += result;
+
+}else{
+
+totalLoss += Math.abs(result);
+
+}
+
 let colorClass =
-parseFloat(trade.result) >= 0
+result >= 0
 ? "trade-profit"
 : "trade-loss";
 
@@ -353,7 +376,7 @@ trade.direction +
 '<br><b>Result:</b> <span class="' +
 colorClass +
 '">$' +
-trade.result +
+result.toFixed(2) +
 '</span>' +
 
 '<br><b>Notes:</b> ' +
@@ -363,12 +386,54 @@ trade.notes +
 
 });
 
-document
-.getElementById("history")
-.innerHTML = html;
+let winRate =
+(totalTrades > 0)
+? (wins / totalTrades * 100)
+: 0;
+
+let netProfit =
+totalProfit - totalLoss;
+
+document.getElementById("stats").innerHTML =
+
+'<div class="stats-grid">' +
+
+'<div class="stat-card">' +
+'<div class="stat-title">Total Trades</div>' +
+'<div class="stat-value">' +
+totalTrades +
+'</div></div>' +
+
+'<div class="stat-card">' +
+'<div class="stat-title">Win Rate</div>' +
+'<div class="stat-value">' +
+winRate.toFixed(1) +
+'%</div></div>' +
+
+'<div class="stat-card">' +
+'<div class="stat-title">Profit</div>' +
+'<div class="stat-value">$' +
+totalProfit.toFixed(2) +
+'</div></div>' +
+
+'<div class="stat-card">' +
+'<div class="stat-title">Loss</div>' +
+'<div class="stat-value">$' +
+totalLoss.toFixed(2) +
+'</div></div>' +
+
+'<div class="stat-card">' +
+'<div class="stat-title">Net Profit</div>' +
+'<div class="stat-value">$' +
+netProfit.toFixed(2) +
+'</div></div>' +
+
+'</div>';
+
+document.getElementById("history").innerHTML =
+html;
 
 }
-
 </script>
 
 </body>
