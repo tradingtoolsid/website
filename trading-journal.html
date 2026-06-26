@@ -321,6 +321,22 @@ document.getElementById("resultValue").value = "";
 document.getElementById("notes").value = "";
 document.getElementById("direction").value = "BUY";
 
+function saveBalance(){
+
+let balance =
+document.getElementById("startingBalance").value;
+
+localStorage.setItem(
+"startingBalance",
+balance
+);
+
+loadTrades();
+
+alert("Balance saved successfully");
+
+}
+
 function saveTrade(){
 
 let trade = {
