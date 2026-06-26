@@ -475,13 +475,80 @@ return;
 
 }
 
+let startingBalance =
+parseFloat(
+localStorage.getItem("startingBalance")
+) || 0;
+
+let currentBalance =
+startingBalance;
+
+let netProfit = 0;
+
 let csv =
-"Date,Pair,Direction,Result,Notes\n";
+
+"Starting Balance," +
+startingBalance +
+"\n";
 
 trades.forEach(trade=>{
 
+netProfit +=
+parseFloat(trade.result);
+
+});
+
+currentBalance =
+startingBalance +
+netProfit;
+
+let growth =
+startingBalance > 0
+? ((currentBalance - startingBalance)
+/ startingBalance * 100)
+: 0;
+
 csv +=
-`"${trade.date}","${trade.pair}","${trade.direction}","${trade.result}","${trade.notes}"\n`;
+"Current Balance," +
+currentBalance.toFixed(2) +
+"\n";
+
+csv +=
+"Net Profit," +
+netProfit.toFixed(2) +
+"\n";
+
+csv +=
+"Growth %," +
+growth.toFixed(2) +
+"\n\n";
+
+csv +=
+"Date,Pair,Direction,Result,Balance After Trade,Growth %,Notes\n";
+
+let runningBalance =
+startingBalance;
+
+trades.forEach(trade=>{
+
+runningBalance +=
+parseFloat(trade.result);
+
+let rowGrowth =
+startingBalance > 0
+? ((runningBalance - startingBalance)
+/ startingBalance * 100)
+: 0;
+
+csv +=
+
+`"${trade.date}",
+"${trade.pair}",
+"${trade.direction}",
+"${trade.result}",
+"${runningBalance.toFixed(2)}",
+"${rowGrowth.toFixed(2)}",
+"${trade.notes}"\n`;
 
 });
 
@@ -508,7 +575,7 @@ a.click();
 
 window.URL.revokeObjectURL(url);
 
-  }
+}
 
 function loadTrades(){
 
