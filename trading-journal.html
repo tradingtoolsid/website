@@ -527,14 +527,7 @@ startingBalance > 0
 : 0;
 
 csv +=
-
-`"${trade.date}",
-"${trade.pair}",
-"${trade.direction}",
-"${trade.result}",
-"${runningBalance.toFixed(2)}",
-"${rowGrowth.toFixed(2)}",
-"${trade.notes}"\n`;
+`"${trade.date}","${trade.pair}","${trade.direction}","${trade.result}","${runningBalance.toFixed(2)}","${rowGrowth.toFixed(2)}","${trade.notes}"\n`;
 
 });
 
