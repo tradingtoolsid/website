@@ -578,6 +578,14 @@ JSON.parse(
 localStorage.getItem("journal")
 ) || [];
 
+let startingBalance =
+parseFloat(
+localStorage.getItem("startingBalance")
+) || 0;
+
+document.getElementById("startingBalance").value =
+startingBalance || "";
+
 let html = "";
 
 let totalTrades = trades.length;
