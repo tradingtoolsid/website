@@ -334,19 +334,6 @@ JSON.stringify(trades)
 
 loadTrades();
 
-}
-
-trades.unshift(trade);
-
-localStorage.setItem(
-"journal",
-JSON.stringify(trades)
-);
-
-loadTrades();
-
-}
-
 function loadTrades(){
 
 let trades =
