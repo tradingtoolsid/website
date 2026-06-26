@@ -1,1 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Trading Journal Pro - TradingToolsID</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0F172A;
+color:white;
+}
+
+header{
+background:#081225;
+padding:25px;
+text-align:center;
+border-bottom:3px solid #FBBF24;
+}
+
+header h1{
+margin:0;
+color:#FBBF24;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 10px;
+font-weight:bold;
+}
+
+.active{
+color:#FBBF24;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1E293B;
+padding:25px;
+border-radius:15px;
+}
+
+.card h2{
+text-align:center;
+color:#FBBF24;
+margin-top:0;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+box-sizing:border-box;
+}
+
+textarea{
+height:100px;
+resize:none;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#FBBF24;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+.result{
+margin-top:20px;
+background:#081225;
+padding:20px;
+border-radius:10px;
+}
+
+.trade-card{
+background:#111827;
+padding:15px;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.trade-profit{
+color:#22C55E;
+font-weight:bold;
+}
+
+.trade-loss{
+color:#EF4444;
+font-weight:bold;
+}
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+border-top:1px solid #334155;
+color:#CBD5E1;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>TradingToolsID</h1>
+
+<nav>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="calculators.html">
+Calculators
+</a>
+
+<a href="market.html">
+Market
+</a>
+
+<a href="tools.html" class="active">
+Tools
+</a>
+
+<a href="#">
+Copy Trading
+</a>
+
+</nav>
+
+<div style="
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+">
+
+<a href="trading-journal.html"
+style="
+background:#FBBF24;
+color:#000;
+padding:8px 15px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+">
+Trading Journal
+</a>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Trading Journal Pro</h2>
+
+<input
+type="date"
+id="date">
+
+<input
+type="text"
+id="pair"
+placeholder="Pair (EURUSD, BTCUSD, etc)">
+
+<select id="direction">
+
+<option value="BUY">
+BUY
+</option>
+
+<option value="SELL">
+SELL
+</option>
+
+</select>
+
+<input
+type="number"
+id="resultValue"
+placeholder="Profit / Loss ($)">
+
+<textarea
+id="notes"
+placeholder="Trade Notes">
+</textarea>
+
+<button onclick="saveTrade()">
+Save Trade
+</button>
+
+<div class="result">
+
+<div id="history">
+
+Result will appear here
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 TradingToolsID</p>
+
+<p>
+Founder & Developer: A Ridwan R
+</p>
+
+</footer>
+
+<script>
+
+loadTrades();
+
+function saveTrade(){
+
+let trade = {
+
+date:
+document.getElementById("date").value,
+
+pair:
+document.getElementById("pair").value,
+
+direction:
+document.getElementById("direction").value,
+
+result:
+document.getElementById("resultValue").value,
+
+notes:
+document.getElementById("notes").value
+
+};
+
+let trades =
+JSON.parse(
+localStorage.getItem("journal")
+) || [];
+
+trades.unshift(trade);
+
+localStorage.setItem(
+"journal",
+JSON.stringify(trades)
+);
+
+loadTrades();
+
+}
+
+function loadTrades(){
+
+let trades =
+JSON.parse(
+localStorage.getItem("journal")
+) || [];
+
+let html = "";
+
+if(trades.length===0){
+
+html =
+"Result will appear here";
+
+}
+
+trades.forEach(trade=>{
+
+let colorClass =
+parseFloat(trade.result) >= 0
+? "trade-profit"
+: "trade-loss";
+
+html +=
+
+'<div class="trade-card">' +
+
+'<b>Date:</b> ' +
+trade.date +
+
+'<br><b>Pair:</b> ' +
+trade.pair +
+
+'<br><b>Direction:</b> ' +
+trade.direction +
+
+'<br><b>Result:</b> <span class="' +
+colorClass +
+'">$' +
+trade.result +
+'</span>' +
+
+'<br><b>Notes:</b> ' +
+trade.notes +
+
+'</div>';
+
+});
+
+document
+.getElementById("history")
+.innerHTML = html;
+
+}
+
+</script>
+
+</body>
+  </html>
