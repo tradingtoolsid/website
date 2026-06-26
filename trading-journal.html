@@ -411,6 +411,17 @@ localStorage.setItem(
 JSON.stringify(trades)
 );
 
+function saveStartingBalance(){
+
+localStorage.setItem(
+"startingBalance",
+document.getElementById("startingBalance").value
+);
+
+loadTrades();
+
+  }
+
 loadTrades();
 
 document.getElementById("date").value = "";
