@@ -427,6 +427,56 @@ loadTrades();
 
 }
 
+function exportCSV(){
+
+let trades =
+JSON.parse(
+localStorage.getItem("journal")
+) || [];
+
+if(trades.length === 0){
+
+alert("No trade data found");
+
+return;
+
+}
+
+let csv =
+"Date,Pair,Direction,Result,Notes\n";
+
+trades.forEach(trade=>{
+
+csv +=
+`"${trade.date}","${trade.pair}","${trade.direction}","${trade.result}","${trade.notes}"\n`;
+
+});
+
+let blob =
+new Blob(
+[csv],
+{
+type:"text/csv"
+}
+);
+
+let url =
+window.URL.createObjectURL(blob);
+
+let a =
+document.createElement("a");
+
+a.href = url;
+
+a.download =
+"TradingJournal.csv";
+
+a.click();
+
+window.URL.revokeObjectURL(url);
+
+  }
+
 function loadTrades(){
 
 let trades =
