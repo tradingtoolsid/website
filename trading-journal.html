@@ -514,6 +514,32 @@ document.getElementById("stats").innerHTML =
 '<div class="stats-grid">' +
 
 '<div class="stat-card">' +
+'<div class="stat-title">Starting Balance</div>' +
+'<div class="stat-value">$' +
+startingBalance.toFixed(2) +
+'</div></div>' +
+
+'<div class="stat-card">' +
+'<div class="stat-title">Current Balance</div>' +
+'<div class="stat-value ' +
+(currentBalance >= startingBalance
+? 'profit-stat'
+: 'loss-stat') +
+'">$' +
+currentBalance.toFixed(2) +
+'</div></div>' +
+
+'<div class="stat-card">' +
+'<div class="stat-title">Growth</div>' +
+'<div class="stat-value ' +
+(growth >= 0
+? 'profit-stat'
+: 'loss-stat') +
+'">' +
+growth.toFixed(2) +
+'%</div></div>' +
+
+'<div class="stat-card">' +
 '<div class="stat-title">Total Trades</div>' +
 '<div class="stat-value">' +
 totalTrades +
