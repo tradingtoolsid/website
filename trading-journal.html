@@ -300,10 +300,33 @@ document.getElementById("notes").value
 
 };
 
+if(
+!document.getElementById("date").value ||
+!document.getElementById("pair").value ||
+!document.getElementById("resultValue").value
+){
+
+alert("Please fill all required fields");
+
+return;
+
+}
+
 let trades =
 JSON.parse(
 localStorage.getItem("journal")
 ) || [];
+
+trades.unshift(trade);
+
+localStorage.setItem(
+"journal",
+JSON.stringify(trades)
+);
+
+loadTrades();
+
+}
 
 trades.unshift(trade);
 
