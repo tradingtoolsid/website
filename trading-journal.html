@@ -213,11 +213,13 @@ Trading Journal
 
 <h2>Trading Journal Pro</h2>
 
-<label>Date</label>
-
 <input
-type="date"
-id="date">
+type="text"
+id="date"
+placeholder="Date"
+onfocus="this.type='date'"
+onblur="if(!this.value)this.type='text'"
+>
 
 <input
 type="text"
