@@ -366,6 +366,17 @@ document.getElementById("resultValue").value = "";
 document.getElementById("notes").value = "";
 document.getElementById("direction").value = "BUY";
 
+function saveStartingBalance(){
+
+localStorage.setItem(
+"startingBalance",
+document.getElementById("startingBalance").value
+);
+
+loadTrades();
+
+}
+
 function saveTrade(){
 
 let trade = {
@@ -410,17 +421,6 @@ localStorage.setItem(
 "journal",
 JSON.stringify(trades)
 );
-
-function saveStartingBalance(){
-
-localStorage.setItem(
-"startingBalance",
-document.getElementById("startingBalance").value
-);
-
-loadTrades();
-
-  }
 
 loadTrades();
 
@@ -474,16 +474,7 @@ parseFloat(
 localStorage.getItem("startingBalance")
 ) || 0;
 
-let currentBalance =
-startingBalance;
-
 let netProfit = 0;
-
-let csv =
-
-"Starting Balance," +
-startingBalance +
-"\n";
 
 trades.forEach(trade=>{
 
@@ -492,9 +483,8 @@ parseFloat(trade.result);
 
 });
 
-currentBalance =
-startingBalance +
-netProfit;
+let currentBalance =
+startingBalance + netProfit;
 
 let growth =
 startingBalance > 0
@@ -502,22 +492,24 @@ startingBalance > 0
 / startingBalance * 100)
 : 0;
 
-csv +=
+let csv =
+
+"Starting Balance," +
+startingBalance +
+"\n" +
+
 "Current Balance," +
 currentBalance.toFixed(2) +
-"\n";
+"\n" +
 
-csv +=
 "Net Profit," +
 netProfit.toFixed(2) +
-"\n";
+"\n" +
 
-csv +=
 "Growth %," +
 growth.toFixed(2) +
-"\n\n";
+"\n\n" +
 
-csv +=
 "Date,Pair,Direction,Result,Balance After Trade,Growth %,Notes\n";
 
 let runningBalance =
@@ -593,17 +585,6 @@ let wins = 0;
 let totalProfit = 0;
 let totalLoss = 0;
 
-if(totalTrades===0){
-
-document.getElementById("stats").innerHTML = "";
-
-document.getElementById("history").innerHTML =
-"<p style='text-align:center;'>Result will appear here</p>";
-
-return;
-
-}
-
 trades.forEach((trade,index)=>{
 
 let result =
@@ -654,17 +635,12 @@ trade.notes +
 });
 
 let winRate =
-(totalTrades > 0)
+totalTrades > 0
 ? (wins / totalTrades * 100)
 : 0;
 
 let netProfit =
 totalProfit - totalLoss;
-
-let startingBalance =
-parseFloat(
-localStorage.getItem("startingBalance")
-) || 0;
 
 let currentBalance =
 startingBalance + netProfit;
@@ -731,7 +707,9 @@ totalLoss.toFixed(2) +
 '<div class="stat-card">' +
 '<div class="stat-title">Net Profit</div>' +
 '<div class="stat-value ' +
-(netProfit >= 0 ? 'profit-stat' : 'loss-stat') +
+(netProfit >= 0
+? 'profit-stat'
+: 'loss-stat') +
 '">$' +
 netProfit.toFixed(2) +
 '</div></div>' +
@@ -739,10 +717,12 @@ netProfit.toFixed(2) +
 '</div>';
 
 document.getElementById("history").innerHTML =
-html;
+totalTrades > 0
+? html
+: "<p style='text-align:center;'>Result will appear here</p>";
 
 }
-</script>
 
+</script>
 </body>
   </html>
