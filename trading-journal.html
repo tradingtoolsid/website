@@ -496,6 +496,19 @@ let winRate =
 let netProfit =
 totalProfit - totalLoss;
 
+let startingBalance =
+parseFloat(
+localStorage.getItem("startingBalance")
+) || 0;
+
+let currentBalance =
+startingBalance + netProfit;
+
+let growth =
+startingBalance > 0
+? (netProfit / startingBalance) * 100
+: 0;
+
 document.getElementById("stats").innerHTML =
 
 '<div class="stats-grid">' +
