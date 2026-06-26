@@ -367,6 +367,28 @@ document.getElementById("direction").value = "BUY";
 
 }
 
+function deleteTrade(index){
+
+if(!confirm("Delete this trade?")){
+return;
+}
+
+let trades =
+JSON.parse(
+localStorage.getItem("journal")
+) || [];
+
+trades.splice(index,1);
+
+localStorage.setItem(
+"journal",
+JSON.stringify(trades)
+);
+
+loadTrades();
+
+}
+
 function loadTrades(){
 
 let trades =
