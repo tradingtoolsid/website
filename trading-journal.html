@@ -457,9 +457,10 @@ totalProfit.toFixed(2) +
 totalLoss.toFixed(2) +
 '</div></div>' +
 
-'<div class="stat-card">' +
 '<div class="stat-title">Net Profit</div>' +
-'<div class="stat-value">$' +
+'<div class="stat-value ' +
+(netProfit >= 0 ? 'profit-stat' : 'loss-stat') +
+'">$' +
 netProfit.toFixed(2) +
 '</div></div>' +
 
