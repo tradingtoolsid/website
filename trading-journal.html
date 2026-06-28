@@ -653,6 +653,25 @@ reader.readAsText(file);
 
 }
 
+function clearJournal(){
+
+if(
+!confirm(
+"Delete ALL journal data and reset balance?"
+)
+){
+return;
+}
+
+localStorage.removeItem("journal");
+localStorage.removeItem("startingBalance");
+
+loadTrades();
+
+alert("Journal cleared successfully");
+
+  }
+
 function loadTrades(){
 
 let trades =
