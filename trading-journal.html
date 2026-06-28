@@ -727,6 +727,44 @@ startingBalance || "";
 
 let html = "";
 
+let pairFilter =
+document.getElementById("pairFilter").value;
+
+let resultFilter =
+document.getElementById("resultFilter").value;
+
+let uniquePairs = [];
+
+trades.forEach(trade=>{
+
+if(
+!uniquePairs.includes(trade.pair)
+){
+uniquePairs.push(trade.pair);
+}
+
+});
+
+let pairOptions =
+'<option value="ALL">All Pairs</option>';
+
+uniquePairs.forEach(pair=>{
+
+pairOptions +=
+'<option value="' +
+pair +
+'">' +
+pair +
+'</option>';
+
+});
+
+document.getElementById("pairFilter").innerHTML =
+pairOptions;
+
+document.getElementById("pairFilter").value =
+pairFilter;
+
 let totalTrades = trades.length;
 let wins = 0;
 let totalProfit = 0;
