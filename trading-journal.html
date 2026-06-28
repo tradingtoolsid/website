@@ -563,6 +563,81 @@ window.URL.revokeObjectURL(url);
 
 }
 
+function importCSV(event){
+
+let file =
+event.target.files[0];
+
+if(!file){
+return;
+}
+
+let reader =
+new FileReader();
+
+reader.onload = function(e){
+
+let text =
+e.target.result;
+
+let rows =
+text.split("\n");
+
+let trades = [];
+
+for(let i = 6; i < rows.length; i++){
+
+let row =
+rows[i].trim();
+
+if(!row){
+continue;
+}
+
+let cols =
+row.replaceAll('"','').split(",");
+
+if(cols.length < 7){
+continue;
+}
+
+trades.push({
+
+date: cols[0],
+pair: cols[1],
+direction: cols[2],
+result: cols[3],
+notes: cols[6]
+
+});
+
+}
+
+localStorage.setItem(
+"journal",
+JSON.stringify(trades)
+);
+
+let startingBalance =
+rows[0].split(",")[1];
+
+localStorage.setItem(
+"startingBalance",
+startingBalance
+);
+
+alert(
+"Trading journal imported successfully"
+);
+
+loadTrades();
+
+};
+
+reader.readAsText(file);
+
+}
+
 function loadTrades(){
 
 let trades =
