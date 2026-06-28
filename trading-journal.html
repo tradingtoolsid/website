@@ -565,6 +565,14 @@ window.URL.revokeObjectURL(url);
 
 function importCSV(event){
 
+if(
+!confirm(
+"Importing will replace all current journal data. Continue?"
+)
+){
+return;
+}
+
 let file =
 event.target.files[0];
 
