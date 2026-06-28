@@ -762,8 +762,17 @@ pair +
 document.getElementById("pairFilter").innerHTML =
 pairOptions;
 
+if(
+uniquePairs.includes(pairFilter)
+||
+pairFilter === "ALL"
+){
 document.getElementById("pairFilter").value =
 pairFilter;
+}else{
+document.getElementById("pairFilter").value =
+"ALL";
+}
 
 let totalTrades = 0;
 let wins = 0;
