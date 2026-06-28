@@ -704,6 +704,12 @@ return;
 localStorage.removeItem("journal");
 localStorage.removeItem("startingBalance");
 
+document.getElementById("pairFilter").value =
+"ALL";
+
+document.getElementById("resultFilter").value =
+"ALL";
+
 loadTrades();
 
 alert("Journal cleared successfully");
