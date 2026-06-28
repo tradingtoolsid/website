@@ -775,6 +775,30 @@ trades.forEach((trade,index)=>{
 let result =
 parseFloat(trade.result);
 
+if(
+pairFilter !== "ALL" &&
+trade.pair !== pairFilter
+){
+return;
+}
+
+if(
+resultFilter === "PROFIT" &&
+result <= 0
+){
+return;
+}
+
+if(
+resultFilter === "LOSS" &&
+result >= 0
+){
+return;
+}
+
+let result =
+parseFloat(trade.result);
+
 if(result > 0){
 
 wins++;
