@@ -345,6 +345,34 @@ style="display:none"
 onchange="importCSV(event)">
 </div>
 
+<div class="action-buttons">
+
+<select id="pairFilter" onchange="loadTrades()">
+
+<option value="ALL">
+All Pairs
+</option>
+
+</select>
+
+<select id="resultFilter" onchange="loadTrades()">
+
+<option value="ALL">
+All Results
+</option>
+
+<option value="PROFIT">
+Profit Only
+</option>
+
+<option value="LOSS">
+Loss Only
+</option>
+
+</select>
+
+</div>
+
 <div class="result">
 
 <div id="stats">
