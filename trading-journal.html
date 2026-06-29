@@ -523,6 +523,43 @@ loadTrades();
 
 }
 
+function editTrade(index){
+
+let trades =
+JSON.parse(
+localStorage.getItem("journal")
+) || [];
+
+let trade =
+trades[index];
+
+document.getElementById("date").value =
+trade.date;
+
+document.getElementById("pair").value =
+trade.pair;
+
+document.getElementById("direction").value =
+trade.direction;
+
+document.getElementById("resultValue").value =
+trade.result;
+
+document.getElementById("notes").value =
+trade.notes;
+
+editIndex = index;
+
+document.getElementById("saveButton").innerHTML =
+"Update Trade";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+  }
+
 function exportCSV(){
 
 let trades =
