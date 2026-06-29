@@ -518,6 +518,24 @@ document.getElementById("direction").value = "BUY";
 
 }
 
+function cancelEdit(){
+
+editIndex = -1;
+
+document.getElementById("date").value = "";
+document.getElementById("pair").value = "";
+document.getElementById("direction").value = "BUY";
+document.getElementById("resultValue").value = "";
+document.getElementById("notes").value = "";
+
+document.getElementById("saveBtn").innerText =
+"Save Trade";
+
+document.getElementById("cancelBtn").style.display =
+"none";
+
+  }
+
 function deleteTrade(index){
 
 if(!confirm("Delete this trade?")){
