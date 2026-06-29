@@ -322,11 +322,28 @@ id="notes"
 placeholder="Trade Notes">
 </textarea>
 
+<div style="display:flex;gap:10px;">
+
 <button
 id="saveButton"
-onclick="saveTrade()">
+onclick="saveTrade()"
+style="flex:1;">
 Save Trade
 </button>
+
+<button
+id="cancelButton"
+onclick="cancelEdit()"
+style="
+flex:1;
+display:none;
+background:#64748B;
+color:white;
+">
+Cancel
+</button>
+
+</div>
 
 <div class="action-buttons">
 
