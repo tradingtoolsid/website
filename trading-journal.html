@@ -471,7 +471,20 @@ JSON.parse(
 localStorage.getItem("journal")
 ) || [];
 
+if(editIndex === -1){
+
 trades.unshift(trade);
+
+}else{
+
+trades[editIndex] = trade;
+
+editIndex = -1;
+
+document.getElementById("saveButton").innerHTML =
+"Save Trade";
+
+}
 
 localStorage.setItem(
 "journal",
