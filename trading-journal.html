@@ -957,6 +957,34 @@ let wins = 0;
 let totalProfit = 0;
 let totalLoss = 0;
 
+if(sortFilter === "newest"){
+
+trades.sort((a,b)=>
+new Date(b.date)-new Date(a.date));
+
+}
+
+else if(sortFilter === "oldest"){
+
+trades.sort((a,b)=>
+new Date(a.date)-new Date(b.date));
+
+}
+
+else if(sortFilter === "profit-high"){
+
+trades.sort((a,b)=>
+parseFloat(b.result)-parseFloat(a.result));
+
+}
+
+else if(sortFilter === "loss-big"){
+
+trades.sort((a,b)=>
+parseFloat(a.result)-parseFloat(b.result));
+
+  }
+
 trades.forEach((trade,index)=>{
 
 let result =
