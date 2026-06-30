@@ -922,6 +922,15 @@ result >= 0
 return;
 }
 
+if(
+search &&
+!trade.pair.toLowerCase().includes(search) &&
+!trade.direction.toLowerCase().includes(search) &&
+!trade.notes.toLowerCase().includes(search)
+){
+return;
+}
+
 totalTrades++;
 
 if(result > 0){
