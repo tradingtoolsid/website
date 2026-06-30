@@ -447,14 +447,14 @@ class="filter-date">
 
 <label>Sort By</label>
 
-<select id="sortFilter" class="filter-input">
+<select
+id="sortFilter"
+class="filter-input"
+onchange="loadTrades()">
 
 <option value="newest">Newest First</option>
-
 <option value="oldest">Oldest First</option>
-
 <option value="profit-high">Highest Profit</option>
-
 <option value="loss-big">Biggest Loss</option>
 
 </select>
