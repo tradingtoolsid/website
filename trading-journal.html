@@ -377,27 +377,21 @@ onchange="importCSV(event)">
 <div class="action-buttons">
 
 <select id="pairFilter" onchange="loadTrades()">
-
-<option value="ALL">
-All Pairs
-</option>
-
+<option value="ALL">All Pairs</option>
 </select>
 
 <select id="resultFilter" onchange="loadTrades()">
+<option value="ALL">All Results</option>
+<option value="PROFIT">Profit Only</option>
+<option value="LOSS">Loss Only</option>
+</select>
 
-<option value="ALL">
-All Results
-</option>
-
-<option value="PROFIT">
-Profit Only
-</option>
-
-<option value="LOSS">
-Loss Only
-</option>
-
+<select id="dateFilter" onchange="loadTrades()">
+<option value="ALL">All Time</option>
+<option value="TODAY">Today</option>
+<option value="WEEK">This Week</option>
+<option value="MONTH">This Month</option>
+<option value="YEAR">This Year</option>
 </select>
 
 </div>
