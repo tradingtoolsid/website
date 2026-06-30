@@ -920,6 +920,14 @@ trades.forEach((trade,index)=>{
 let result =
 parseFloat(trade.result);
 
+if(fromDate && trade.date < fromDate){
+return;
+}
+
+if(toDate && trade.date > toDate){
+return;
+  }
+
 if(
 pairFilter !== "ALL" &&
 trade.pair !== pairFilter
