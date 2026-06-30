@@ -1095,6 +1095,20 @@ totalTrades > 0
 
 }
 
+function resetFilters(){
+
+document.getElementById("pairFilter").value = "ALL";
+
+document.getElementById("resultFilter").value = "ALL";
+
+document.getElementById("fromDate").value = "";
+
+document.getElementById("toDate").value = "";
+
+loadTrades();
+
+  }
+
 </script>
 </body>
   </html>
