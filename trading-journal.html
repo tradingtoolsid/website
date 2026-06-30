@@ -833,10 +833,6 @@ document.getElementById("pairFilter").value;
 let resultFilter =
 document.getElementById("resultFilter").value;
 
-let search =
-document.getElementById("searchTrade").value
-.toLowerCase();
-
 let uniquePairs = [];
 
 trades.forEach(trade=>{
@@ -905,15 +901,6 @@ return;
 if(
 resultFilter === "LOSS" &&
 result >= 0
-){
-return;
-}
-
-if(
-search &&
-!trade.pair.toLowerCase().includes(search) &&
-!trade.direction.toLowerCase().includes(search) &&
-!trade.notes.toLowerCase().includes(search)
 ){
 return;
 }
