@@ -374,6 +374,12 @@ style="display:none"
 onchange="importCSV(event)">
 </div>
 
+<input
+type="text"
+id="searchTrade"
+placeholder="Search Pair, Notes, Direction..."
+oninput="loadTrades()">
+
 <div class="action-buttons">
 
 <select id="pairFilter" onchange="loadTrades()">
