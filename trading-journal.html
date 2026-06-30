@@ -415,57 +415,37 @@ onchange="importCSV(event)">
 <div class="action-buttons">
 
 <div style="flex:1;">
-<div style="font-size:12px;color:#CBD5E1;margin-bottom:5px;">
-From Date
-</div>
-
-<input
-type="date"
-id="fromDate"
-class="filter-date">
+<label>From Date</label>
+<input type="date" id="fromDate">
 </div>
 
 <div style="flex:1;">
-<div style="font-size:12px;color:#CBD5E1;margin-bottom:5px;">
-To Date
+<label>To Date</label>
+<input type="date" id="toDate">
 </div>
 
-<input
-type="date"
-id="toDate"
-class="filter-date">
 </div>
+
+<div style="margin-top:12px;">
+
+<label>Sort By</label>
 
 <select id="sortFilter">
 
-<option value="newest">
-Newest First
-</option>
-
-<option value="oldest">
-Oldest First
-</option>
-
-<option value="profit">
-Highest Profit
-</option>
-
-<option value="loss">
-Biggest Loss
-</option>
+<option value="newest">Newest First</option>
+<option value="oldest">Oldest First</option>
 
 </select>
 
-<button
-class="small-btn"
-onclick="loadTrades()">
+</div>
+
+<div class="action-buttons">
+
+<button onclick="applyFilter()">
 Apply
 </button>
 
-<button
-class="small-btn"
-style="background:#64748B;"
-onclick="resetFilters()">
+<button onclick="resetFilter()">
 Reset
 </button>
 
