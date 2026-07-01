@@ -1156,6 +1156,21 @@ netProfit.toFixed(2) +
 '</div>';
 
 document.getElementById("history").innerHTML =
+`
+<div style="
+margin-bottom:15px;
+padding:10px;
+background:#1E293B;
+border-radius:8px;
+font-size:14px;
+color:#CBD5E1;
+text-align:left;
+">
+Showing <b>${totalTrades}</b> of <b>${allTrades}</b> trades
+</div>
+`
++
+(
 totalTrades > 0
 ? html
 : `
@@ -1167,6 +1182,9 @@ No trades found
 <div style="margin-top:8px;font-size:14px;line-height:1.6;">
 Try changing your filters or add a new trade.
 </div>
+</div>
+`
+);
 </div>
 `;
 
