@@ -1146,6 +1146,13 @@ startingBalance > 0
 ? (netProfit / startingBalance) * 100
 : 0;
 
+let profitFactor =
+grossLoss > 0
+? (grossProfit / grossLoss)
+: grossProfit > 0
+? Infinity
+: 0;
+
 document.getElementById("stats").innerHTML =
 
 '<div class="stats-grid">' +
