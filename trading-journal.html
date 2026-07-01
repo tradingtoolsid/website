@@ -970,6 +970,38 @@ document.getElementById("pairFilter").value =
 "ALL";
 }
 
+if(pairFilter !== "ALL"){
+activeFilters.push("Pair: " + pairFilter);
+}
+
+if(resultFilter === "PROFIT"){
+activeFilters.push("Profit Only");
+}
+
+if(resultFilter === "LOSS"){
+activeFilters.push("Loss Only");
+}
+
+if(fromDate){
+activeFilters.push("From: " + fromDate);
+}
+
+if(toDate){
+activeFilters.push("To: " + toDate);
+}
+
+if(sortFilter !== "newest"){
+
+const sortNames = {
+"oldest":"Oldest First",
+"profit-high":"Highest Profit",
+"loss-big":"Biggest Loss"
+};
+
+activeFilters.push("Sort: " + sortNames[sortFilter]);
+
+  }
+
 let totalTrades = 0;
 let wins = 0;
 let totalProfit = 0;
