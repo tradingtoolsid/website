@@ -1202,6 +1202,25 @@ Try changing your filters or add a new trade.
 `
 );
 
+let badge =
+document.getElementById("activeFilters");
+
+if(activeFilters.length>0){
+
+badge.style.display="block";
+
+badge.innerHTML=
+"<b>Active Filters:</b><br>" +
+activeFilters.join(" • ");
+
+}else{
+
+badge.style.display="none";
+
+badge.innerHTML="";
+
+  }
+
 }
 
 function resetFilters(){
