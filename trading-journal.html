@@ -1156,7 +1156,17 @@ netProfit.toFixed(2) +
 document.getElementById("history").innerHTML =
 totalTrades > 0
 ? html
-: "<p style='text-align:center;'>Result will appear here</p>";
+: `
+<div style="padding:30px 15px;text-align:center;color:#94A3B8;">
+<div style="font-size:42px;">📂</div>
+<div style="font-size:18px;font-weight:bold;color:white;margin-top:10px;">
+No trades found
+</div>
+<div style="margin-top:8px;font-size:14px;line-height:1.6;">
+Try changing your filters or add a new trade.
+</div>
+</div>
+`;
 
 }
 
