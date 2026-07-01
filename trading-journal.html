@@ -1217,6 +1217,14 @@ totalLoss.toFixed(2) +
 netProfit.toFixed(2) +
 '</div></div>' +
 
+'<div class="stat-card">' +
+'<div class="stat-title">Profit Factor</div>' +
+'<div class="stat-value">' +
+(profitFactor === Infinity
+? "∞"
+: profitFactor.toFixed(2)) +
+'</div></div>' +
+
 '</div>';
 
 document.getElementById("history").innerHTML =
