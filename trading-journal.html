@@ -1158,6 +1158,11 @@ grossLoss > 0
 ? Infinity
 : 0;
 
+averageWin =
+wins > 0
+? grossProfit / wins
+: 0;
+
 document.getElementById("stats").innerHTML =
 
 '<div class="stats-grid">' +
