@@ -1165,6 +1165,11 @@ wins > 0
 ? grossProfit / wins
 : 0;
 
+averageLoss =
+losses > 0
+? grossLoss / losses
+: 0;
+
 document.getElementById("stats").innerHTML =
 
 '<div class="stats-grid">' +
