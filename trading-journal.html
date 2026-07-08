@@ -1218,25 +1218,6 @@ startingBalance + netProfit;
 
 let runningBalance = startingBalance;
 
-trades.forEach(trade=>{
-
-let result = parseFloat(trade.result);
-
-if(fromDate && trade.date < fromDate) return;
-if(toDate && trade.date > toDate) return;
-
-if(pairFilter !== "ALL" && trade.pair !== pairFilter) return;
-
-if(resultFilter === "PROFIT" && result <= 0) return;
-
-if(resultFilter === "LOSS" && result >= 0) return;
-
-runningBalance += result;
-
-equityData.push(runningBalance);
-
-});
-
 trades
 .slice()
 .reverse()
