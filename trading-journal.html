@@ -1217,6 +1217,40 @@ averageLoss > 0
 ? averageWin / averageLoss
 : 0;
 
+let monthlyHTML = "";
+
+Object.keys(monthlyStats)
+.sort()
+.reverse()
+.forEach(month=>{
+
+let color =
+monthlyStats[month].profit >= 0
+? "profit-stat"
+: "loss-stat";
+
+monthlyHTML +=
+
+'<div class="stat-card">' +
+
+'<div class="stat-title">' +
+month +
+'</div>' +
+
+'<div class="stat-value ' +
+color +
+'">$' +
+monthlyStats[month].profit.toFixed(2) +
+'</div>' +
+
+'<div style="font-size:12px;color:#CBD5E1;margin-top:5px;">' +
+monthlyStats[month].trades +
+' Trades</div>' +
+
+'</div>';
+
+});
+
 document.getElementById("stats").innerHTML =
 
 '<div class="stats-grid">' +
