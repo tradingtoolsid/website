@@ -1363,6 +1363,15 @@ bestWinningStreak +
 worstLosingStreak +
 '</div></div>' +
 
+'<div class="stat-card">' +
+'<div class="stat-title">Best Month</div>' +
+'<div class="stat-value profit-stat">' +
+(bestMonth || "-") +
+'</div>' +
+'<div style="font-size:12px;color:#CBD5E1;margin-top:5px;">$' +
+(bestMonthProfit === -Infinity ? "0.00" : bestMonthProfit.toFixed(2)) +
+'</div></div>' +
+
 '</div>'; +
 
 '<h3 style="margin-top:25px;color:#FBBF24;text-align:center;">Monthly Statistics</h3>' +
