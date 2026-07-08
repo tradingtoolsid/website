@@ -1227,6 +1227,13 @@ Object.keys(monthlyStats)
 .reverse()
 .forEach(month=>{
 
+if(monthlyStats[month].profit > bestMonthProfit){
+
+    bestMonthProfit = monthlyStats[month].profit;
+    bestMonth = month;
+
+}
+
 let color =
 monthlyStats[month].profit >= 0
 ? "profit-stat"
