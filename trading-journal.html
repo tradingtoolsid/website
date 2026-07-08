@@ -1096,12 +1096,20 @@ wins++;
 totalProfit += result;
 grossProfit += result;
 
+currentWinStreak++;
+
+if(currentWinStreak > bestWinningStreak){
+bestWinningStreak = currentWinStreak;
+}
+
 }else{
 
 losses++;
 
 totalLoss += Math.abs(result);
 grossLoss += Math.abs(result);
+
+currentWinStreak = 0;
 
 }
 
