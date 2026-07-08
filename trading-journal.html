@@ -1615,6 +1615,30 @@ ctx.lineTo(x,y);
 
 ctx.stroke();
 
+ctx.fillStyle="#FBBF24";
+
+data.forEach((value,index)=>{
+
+    let x =
+    padding +
+    (index/(data.length-1))
+    *
+    (canvas.width-padding*2);
+
+    let y =
+    canvas.height-padding-
+    (
+    (value-min)/(max-min||1)
+    )
+    *
+    (canvas.height-padding*2);
+
+    ctx.beginPath();
+    ctx.arc(x,y,4,0,Math.PI*2);
+    ctx.fill();
+
+});
+
   }
 
 </script>
