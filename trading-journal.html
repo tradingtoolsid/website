@@ -1237,6 +1237,13 @@ if(monthlyStats[month].profit > bestMonthProfit){
 
 }
 
+if(monthlyStats[month].profit < worstMonthProfit){
+
+    worstMonthProfit = monthlyStats[month].profit;
+    worstMonth = month;
+
+  }
+
 let color =
 monthlyStats[month].profit >= 0
 ? "profit-stat"
