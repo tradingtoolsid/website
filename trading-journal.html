@@ -1530,6 +1530,77 @@ document.getElementById("sortFilter").value = "newest";
 
 loadTrades();
 
+}
+
+function drawEquityCurve(data){
+
+const canvas =
+document.getElementById("equityChart");
+
+if(!canvas) return;
+
+const ctx =
+canvas.getContext("2d");
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+if(data.length < 2){
+
+ctx.fillStyle="#94A3B8";
+ctx.font="16px Arial";
+ctx.fillText(
+"Not enough trades",
+20,
+100
+);
+
+return;
+
+}
+
+const max =
+Math.max(...data);
+
+const min =
+Math.min(...data);
+
+const padding = 20;
+
+ctx.beginPath();
+ctx.strokeStyle="#22C55E";
+ctx.lineWidth=3;
+
+data.forEach((value,index)=>{
+
+let x =
+padding +
+(index/(data.length-1))
+*
+(canvas.width-padding*2);
+
+let y =
+canvas.height-padding-
+(
+(value-min)/
+(max-min || 1)
+)
+*
+(canvas.height-padding*2);
+
+if(index===0){
+
+ctx.moveTo(x,y);
+
+}else{
+
+ctx.lineTo(x,y);
+
+}
+
+});
+
+ctx.stroke();
+
   }
 
 </script>
