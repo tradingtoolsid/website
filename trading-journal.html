@@ -1570,11 +1570,17 @@ return;
 
 }
 
-const max =
-Math.max(...data);
+let max = Math.max(...data);
+let min = Math.min(...data);
 
-const min =
-Math.min(...data);
+let range = max - min;
+
+if(range===0){
+    range = 1;
+}
+
+max += range*0.15;
+min -= range*0.15;
 
 const padding = 20;
 
