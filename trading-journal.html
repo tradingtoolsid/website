@@ -1382,6 +1382,15 @@ worstLosingStreak +
 (bestMonthProfit === -Infinity ? "0.00" : bestMonthProfit.toFixed(2)) +
 '</div></div>' +
 
+'<div class="stat-card">' +
+'<div class="stat-title">Worst Month</div>' +
+'<div class="stat-value loss-stat">' +
+(worstMonth || "-") +
+'</div>' +
+'<div style="font-size:12px;color:#CBD5E1;margin-top:5px;">$' +
+(worstMonthProfit === Infinity ? "0.00" : worstMonthProfit.toFixed(2)) +
+'</div></div>' +
+
 '</div>'; +
 
 '<h3 style="margin-top:25px;color:#FBBF24;text-align:center;">Monthly Statistics</h3>' +
