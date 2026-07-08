@@ -1216,6 +1216,19 @@ totalProfit - totalLoss;
 let currentBalance =
 startingBalance + netProfit;
 
+let runningBalance = startingBalance;
+
+trades
+.slice()
+.reverse()
+.forEach(trade=>{
+
+runningBalance += parseFloat(trade.result);
+
+equityData.push(runningBalance);
+
+});
+
 let growth =
 startingBalance > 0
 ? (netProfit / startingBalance) * 100
