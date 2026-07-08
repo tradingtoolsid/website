@@ -1064,22 +1064,6 @@ trades.forEach((trade,index)=>{
 let result =
 parseFloat(trade.result);
 
-let month = trade.date.substring(0,7);
-
-if(!monthlyStats[month]){
-
-monthlyStats[month] = {
-
-profit: 0,
-trades: 0
-
-};
-
-}
-
-monthlyStats[month].profit += result;
-monthlyStats[month].trades++;
-
 if(fromDate && trade.date < fromDate){
 return;
 }
@@ -1108,6 +1092,22 @@ result >= 0
 ){
 return;
 }
+
+let month = trade.date.substring(0,7);
+
+if(!monthlyStats[month]){
+
+monthlyStats[month] = {
+
+profit: 0,
+trades: 0
+
+};
+
+}
+
+monthlyStats[month].profit += result;
+monthlyStats[month].trades++;
 
 totalTrades++;
 
