@@ -1681,6 +1681,23 @@ data.forEach((value,index)=>{
 
 });
 
+// ===== FILL AREA =====
+
+ctx.lineTo(
+canvas.width-rightPadding,
+canvas.height-bottomPadding
+);
+
+ctx.lineTo(
+leftPadding,
+canvas.height-bottomPadding
+);
+
+ctx.closePath();
+
+ctx.fillStyle = "rgba(16,185,129,0.18)";
+ctx.fill();
+
 // ===== Y AXIS =====
 
 ctx.fillStyle = "#CBD5E1";
