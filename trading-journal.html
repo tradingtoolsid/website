@@ -1692,18 +1692,18 @@ ctx.fillStyle="#FBBF24";
 data.forEach((value,index)=>{
 
     let x =
-    padding +
-    (index/(data.length-1))
-    *
-    (canvas.width-padding*2);
+leftPadding +
+(index/(data.length-1))
+*
+(canvas.width-leftPadding-rightPadding);
 
-    let y =
-    canvas.height-padding-
-    (
-    (value-min)/(max-min||1)
-    )
-    *
-    (canvas.height-topPadding-bottomPadding)
+let y =
+canvas.height-bottomPadding-
+(
+(value-min)/(max-min||1)
+)
+*
+(canvas.height-topPadding-bottomPadding);
 
     ctx.beginPath();
     ctx.arc(x,y,4,0,Math.PI*2);
