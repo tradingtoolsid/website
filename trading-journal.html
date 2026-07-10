@@ -1734,6 +1734,37 @@ canvas.height-bottomPadding-
 
 });
 
+// ===== X AXIS =====
+
+ctx.fillStyle = "#CBD5E1";
+ctx.font = "11px Arial";
+ctx.textAlign = "center";
+
+const maxLabels = 8;
+
+for(let i=0;i<data.length;i++){
+
+    if(
+        data.length > maxLabels &&
+        i % Math.ceil(data.length / maxLabels) !== 0 &&
+        i !== data.length - 1
+    ){
+        continue;
+    }
+
+    let x =
+    leftPadding +
+    (i/(data.length-1)) *
+    (canvas.width-leftPadding-rightPadding);
+
+    ctx.fillText(
+        i + 1,
+        x,
+        canvas.height - 10
+    );
+
+}
+
   }
 
 </script>
