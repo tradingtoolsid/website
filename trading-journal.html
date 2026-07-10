@@ -1495,7 +1495,26 @@ Showing <b>${totalTrades}</b> of <b>${allTrades}</b> trades
 +
 (
 totalTrades > 0
-? html
+? html +
+
+'<div style="display:flex;justify-content:center;gap:8px;margin-top:20px;flex-wrap:wrap;">' +
+
+'<button class="small-btn" style="width:auto;padding:8px 14px;" ' +
+(currentPage==1 ? 'disabled' : '') +
+' onclick="currentPage--;loadTrades()">◀ Prev</button>' +
+
+'<span style="padding:10px 15px;font-weight:bold;color:#FBBF24;">Page ' +
+currentPage +
+' / ' +
+totalPages +
+'</span>' +
+
+'<button class="small-btn" style="width:auto;padding:8px 14px;" ' +
+(currentPage>=totalPages ? 'disabled' : '') +
+' onclick="currentPage++;loadTrades()">Next ▶</button>' +
+
+'</div>'
+
 : `
 <div style="padding:30px 15px;text-align:center;color:#94A3B8;">
 <div style="font-size:42px;">📂</div>
@@ -1507,8 +1526,8 @@ Try changing your filters or add a new trade.
 </div>
 </div>
 `
-);
-
+)
+  
 let badge =
 document.getElementById("activeFilters");
 
