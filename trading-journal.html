@@ -1659,10 +1659,10 @@ ctx.lineCap="round";
 data.forEach((value,index)=>{
 
 let x =
-padding +
+leftPadding +
 (index/(data.length-1))
 *
-(canvas.width-padding*2);
+(canvas.width-leftPadding-rightPadding)
 
 let y =
 canvas.height-padding-
