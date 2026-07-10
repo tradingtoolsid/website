@@ -1650,42 +1650,36 @@ if(range===0){
 max += range*0.15;
 min -= range*0.15;
 
+// ===== BUILD EQUITY PATH =====
+
 ctx.beginPath();
-ctx.strokeStyle="#10B981";
-ctx.lineWidth=4;
-ctx.lineJoin="round";
-ctx.lineCap="round";
 
 data.forEach((value,index)=>{
 
-let x =
-leftPadding +
-(index/(data.length-1))
-*
-(canvas.width-leftPadding-rightPadding);
+    let x =
+    leftPadding +
+    (index/(data.length-1)) *
+    (canvas.width-leftPadding-rightPadding);
 
-let y =
-canvas.height-bottomPadding-
-(
-(value-min)/
-(max-min || 1)
-)
-*
-(canvas.height-topPadding-bottomPadding);
+    let y =
+    canvas.height-bottomPadding-
+    (
+    (value-min)/(max-min)
+    )
+    *
+    (canvas.height-topPadding-bottomPadding);
 
-if(index===0){
+    if(index===0){
 
-ctx.moveTo(x,y);
+        ctx.moveTo(x,y);
 
-}else{
+    }else{
 
-ctx.lineTo(x,y);
+        ctx.lineTo(x,y);
 
-}
+    }
 
 });
-
-ctx.stroke();
 
 // ===== Y AXIS =====
 
