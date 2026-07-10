@@ -1687,6 +1687,29 @@ ctx.lineTo(x,y);
 
 ctx.stroke();
 
+// ===== Y AXIS =====
+
+ctx.fillStyle = "#CBD5E1";
+ctx.font = "12px Arial";
+ctx.textAlign = "right";
+
+for(let i=0;i<=5;i++){
+
+    let value =
+    max - (i*(max-min)/5);
+
+    let y =
+    topPadding +
+    i*((canvas.height-topPadding-bottomPadding)/5);
+
+    ctx.fillText(
+        "$" + value.toFixed(0),
+        leftPadding - 8,
+        y + 4
+    );
+
+  }
+
 ctx.fillStyle="#FBBF24";
 
 data.forEach((value,index)=>{
