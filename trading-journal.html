@@ -1180,6 +1180,22 @@ filteredTrades.push({
 
 });
 
+const totalPages =
+Math.ceil(filteredTrades.length / tradesPerPage);
+
+if(currentPage > totalPages){
+    currentPage = totalPages || 1;
+}
+
+const start =
+(currentPage - 1) * tradesPerPage;
+
+const end =
+start + tradesPerPage;
+
+const pageTrades =
+filteredTrades.slice(start, end);
+
 let winRate =
 totalTrades > 0
 ? (wins / totalTrades * 100)
