@@ -1698,6 +1698,43 @@ ctx.closePath();
 ctx.fillStyle = "rgba(16,185,129,0.18)";
 ctx.fill();
 
+// ===== DRAW EQUITY LINE =====
+
+ctx.beginPath();
+
+data.forEach((value,index)=>{
+
+    let x =
+    leftPadding +
+    (index/(data.length-1)) *
+    (canvas.width-leftPadding-rightPadding);
+
+    let y =
+    canvas.height-bottomPadding-
+    (
+    (value-min)/(max-min)
+    )
+    *
+    (canvas.height-topPadding-bottomPadding);
+
+    if(index===0){
+
+        ctx.moveTo(x,y);
+
+    }else{
+
+        ctx.lineTo(x,y);
+
+    }
+
+});
+
+ctx.strokeStyle="#10B981";
+ctx.lineWidth=4;
+ctx.lineJoin="round";
+ctx.lineCap="round";
+ctx.stroke();
+
 // ===== Y AXIS =====
 
 ctx.fillStyle = "#CBD5E1";
