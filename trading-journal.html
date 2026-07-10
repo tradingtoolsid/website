@@ -1703,7 +1703,7 @@ data.forEach((value,index)=>{
     (value-min)/(max-min||1)
     )
     *
-    (canvas.height-padding*2);
+    (canvas.height-topPadding-bottomPadding)
 
     ctx.beginPath();
     ctx.arc(x,y,4,0,Math.PI*2);
