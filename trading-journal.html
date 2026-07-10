@@ -1618,8 +1618,8 @@ for(let i=0;i<=5;i++){
 topPadding +
 i * ((canvas.height - topPadding - bottomPadding)/5);
     ctx.beginPath();
-    ctx.moveTo(padding, y);
-    ctx.lineTo(canvas.width-padding, y);
+    ctx.moveTo(leftPadding, y);
+ctx.lineTo(canvas.width-rightPadding, y);
     ctx.stroke();
 
 }
