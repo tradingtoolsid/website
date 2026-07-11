@@ -843,6 +843,24 @@ currentWinStreak = 0;
 
 });
 
+Object.keys(monthlyStats).forEach(month=>{
+
+    if(monthlyStats[month].profit > bestMonthProfit){
+
+        bestMonthProfit = monthlyStats[month].profit;
+        bestMonth = month;
+
+    }
+
+    if(monthlyStats[month].profit < worstMonthProfit){
+
+        worstMonthProfit = monthlyStats[month].profit;
+        worstMonth = month;
+
+    }
+
+});
+
 let winRate =
 totalTrades > 0
 ? (wins / totalTrades * 100)
