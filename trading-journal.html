@@ -811,6 +811,21 @@ grossLoss > 0
 ? grossProfit / grossLoss
 : 0;
 
+let averageWin =
+wins > 0
+? grossProfit / wins
+: 0;
+
+let averageLoss =
+losses > 0
+? grossLoss / losses
+: 0;
+
+let averageRR =
+averageLoss > 0
+? averageWin / averageLoss
+: 0;
+
 let csv =
 
 "===== TRADING JOURNAL REPORT =====\n" +
