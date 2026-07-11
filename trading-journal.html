@@ -889,7 +889,11 @@ averageLoss > 0
 let csv =
 
 "Trading Journal Report\n\n" +
-  
+
+"ACCOUNT SUMMARY,\n" +
+
+"Metric,Value\n" +
+
 "Starting Balance," +
 startingBalance +
 "\n" +
@@ -932,7 +936,7 @@ grossLoss.toFixed(2) +
 
 "Profit Factor," +
 profitFactor.toFixed(2) +
-"\n\n" +
+"\n" +
 
 "Average Win," +
 averageWin.toFixed(2) +
@@ -952,18 +956,6 @@ bestWinningStreak +
 
 "Worst Losing Streak," +
 worstLosingStreak +
-"\n" +
-
-"Best Month," +
-bestMonth +
-"," +
-bestMonthProfit.toFixed(2) +
-"\n" +
-
-"Worst Month," +
-worstMonth +
-"," +
-worstMonthProfit.toFixed(2) +
 "\n\n" +
 
 "Date,Pair,Direction,Result,Balance After Trade,Growth %,Notes\n";
