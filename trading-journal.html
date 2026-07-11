@@ -775,6 +775,42 @@ startingBalance > 0
 / startingBalance * 100)
 : 0;
 
+let totalTrades = trades.length;
+
+let wins = 0;
+let losses = 0;
+
+let grossProfit = 0;
+let grossLoss = 0;
+
+trades.forEach(trade=>{
+
+let result = parseFloat(trade.result);
+
+if(result > 0){
+
+wins++;
+grossProfit += result;
+
+}else if(result < 0){
+
+losses++;
+grossLoss += Math.abs(result);
+
+}
+
+});
+
+let winRate =
+totalTrades > 0
+? (wins / totalTrades * 100)
+: 0;
+
+let profitFactor =
+grossLoss > 0
+? grossProfit / grossLoss
+: 0;
+
 let csv =
 
 "Starting Balance," +
