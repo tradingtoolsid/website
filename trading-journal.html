@@ -1044,6 +1044,18 @@ text.split("\n");
 
 let trades = [];
 
+let startRow = rows.findIndex(row =>
+row.startsWith("Date,Pair")
+);
+
+if(startRow === -1){
+
+alert("Invalid CSV format");
+
+return;
+
+}
+
 for(let i = 6; i < rows.length; i++){
 
 let row =
