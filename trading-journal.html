@@ -783,6 +783,12 @@ let losses = 0;
 let grossProfit = 0;
 let grossLoss = 0;
 
+let currentWinStreak = 0;
+let bestWinningStreak = 0;
+
+let currentLosingStreak = 0;
+let worstLosingStreak = 0;
+
 trades.forEach(trade=>{
 
 let result = parseFloat(trade.result);
