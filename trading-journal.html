@@ -798,10 +798,26 @@ if(result > 0){
 wins++;
 grossProfit += result;
 
+currentWinStreak++;
+
+if(currentWinStreak > bestWinningStreak){
+bestWinningStreak = currentWinStreak;
+}
+
+currentLosingStreak = 0;
+
 }else if(result < 0){
 
 losses++;
 grossLoss += Math.abs(result);
+
+currentLosingStreak++;
+
+if(currentLosingStreak > worstLosingStreak){
+worstLosingStreak = currentLosingStreak;
+}
+
+currentWinStreak = 0;
 
 }
 
